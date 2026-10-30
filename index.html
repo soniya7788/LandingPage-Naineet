@@ -3,60 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101936">
-
+<meta name="theme-color" content="#111a3b">
 <title>Verified Candidate Profile | Naineet</title>
 
 <style>
 :root {
-    --navy: #101936;
-    --navy-light: #19264b;
-    --purple: #635bff;
-    --purple-light: #eeedff;
-    --teal: #079b78;
-    --teal-light: #e7faf3;
-    --background: #f4f6fc;
-    --surface: #ffffff;
-    --border: #e4e8f2;
-    --text: #202b49;
-    --muted: #7d879f;
-    --shadow: 0 12px 35px rgba(27, 39, 82, .055);
+    --navy: #111a3b;
+    --navy2: #1a2d50;
+    --purple: #6557ff;
+    --purple-light: #f0efff;
+    --green: #079b76;
+    --green-light: #e9faf3;
+    --bg: #f4f6fc;
+    --white: #ffffff;
+    --border: #e1e6f0;
+    --text: #25304d;
+    --muted: #78839c;
+    --shadow: 0 12px 35px rgba(27,39,82,.055);
 }
 
 * {
     box-sizing: border-box;
-    scroll-margin-top: 100px;
-}
-
-html {
     scroll-behavior: smooth;
+    scroll-margin-top: 100px;
 }
 
 body {
     margin: 0;
     font-family: Inter, "Segoe UI", Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
     color: var(--text);
     background:
-        radial-gradient(circle at 90% 0%, #e9e8ff 0, transparent 25%),
-        var(--background);
+        radial-gradient(circle at 90% 0%, #e9e8ff 0, transparent 24%),
+        var(--bg);
+    font-size: 14px;
+    line-height: 1.6;
 }
 
-button,
-input {
+button, input, a {
     font: inherit;
 }
 
-button,
-a {
+button, a {
     -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
 }
 
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
-    outline: 3px solid #a7a3ff;
+    outline: 3px solid #aaa4ff;
     outline-offset: 3px;
 }
 
@@ -67,19 +65,16 @@ input:focus-visible {
 /* HEADER */
 
 .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    min-height: 76px;
-    padding: 13px 5%;
+    min-height: 78px;
+    padding: 12px 4.5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
     color: white;
-    background: rgba(16, 25, 54, .97);
-    border-bottom: 1px solid rgba(255,255,255,.08);
-    backdrop-filter: blur(18px);
+    background: linear-gradient(110deg, #142b42, #1c4059);
+    border-bottom: 3px solid #21b98b;
+    box-shadow: 0 5px 22px #0e23351a;
 }
 
 .brand {
@@ -87,42 +82,50 @@ input:focus-visible {
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    color: white;
+    min-width: 0;
 }
 
-.brand-mark {
-    width: 43px;
-    height: 43px;
-    display: grid;
-    place-items: center;
-    border-radius: 13px;
-    background: linear-gradient(145deg, #8278ff, #5147e9);
-    font-size: 23px;
-    font-weight: 900;
-    box-shadow: 0 5px 20px #635bff40;
+.brand-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    flex-shrink: 0;
+    background: white;
+    padding: 5px;
+    border-radius: 12px;
 }
 
-.brand-name {
-    font-size: 23px;
-    font-weight: 850;
-    letter-spacing: -.8px;
-    line-height: 1.15;
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
 }
 
-.brand-tagline {
-    display: block;
-    margin-top: 5px;
-    color: #b7c2e5;
+.brand-name-image {
+     display: block;
+    width: 150px;
+    max-width: 150px;
+    height: auto;
+    max-height: 38px;
+    object-fit: contain;
+    object-position: left center;
+    opacity: 1;
+    visibility: visible;
+    flex-shrink: 0;
+}
+
+.brand-copy small {
+    color: #c9d9e6;
     font-size: 9px;
-    font-weight: 750;
-    letter-spacing: 1.8px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
 }
 
 .header-right {
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: #dbe3ff;
+    gap: 9px;
+    color: #e1edf5;
     font-size: 12px;
 }
 
@@ -131,27 +134,27 @@ input:focus-visible {
     height: 8px;
     border-radius: 50%;
     background: #36e0ae;
-    box-shadow: 0 0 12px #36e0ae80;
+    box-shadow: 0 0 12px #36e0ae70;
 }
 
-/* MAIN CONTAINER */
+/* PAGE */
 
 .container {
-    width: min(1450px, 100%);
+    width: min(1500px, 100%);
     margin: auto;
-    padding: 32px 30px 40px;
+    padding: 32px 30px 42px;
 }
 
 .page-heading {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    align-items: center;
+    gap: 22px;
     margin-bottom: 25px;
 }
 
 .eyebrow {
-    margin: 0 0 6px;
+    margin: 0 0 5px;
     color: var(--purple);
     font-size: 10px;
     font-weight: 850;
@@ -162,9 +165,9 @@ input:focus-visible {
 .page-heading h1 {
     margin: 0;
     color: var(--navy);
-    font-size: clamp(25px, 3vw, 35px);
+    font-size: clamp(26px, 3vw, 36px);
     font-weight: 850;
-    letter-spacing: -1.3px;
+    letter-spacing: -1.2px;
     line-height: 1.2;
 }
 
@@ -187,7 +190,8 @@ input:focus-visible {
     display: block;
     color: var(--muted);
     font-size: 10px;
-    font-weight: 650;
+    font-weight: 700;
+    letter-spacing: .7px;
 }
 
 .record-id strong {
@@ -197,11 +201,11 @@ input:focus-visible {
     font-size: 13px;
 }
 
-/* LOADING / ERROR MESSAGE */
+/* LOADING AND ERRORS */
 
 .message {
-    padding: 18px 20px;
-    margin-bottom: 18px;
+    padding: 17px 20px;
+    margin-bottom: 20px;
     border: 1px solid var(--border);
     border-radius: 14px;
     background: white;
@@ -209,16 +213,16 @@ input:focus-visible {
 }
 
 .message.error {
-    border-color: #ffd7dc;
-    background: #fff4f5;
-    color: #b42336;
+    border-color: #ffd3d8;
+    background: #fff3f4;
+    color: #ad2639;
 }
 
-/* MAIN TWO-COLUMN LAYOUT */
+/* LAYOUT */
 
 .main-layout {
     display: grid;
-    grid-template-columns: 295px minmax(0, 1fr);
+    grid-template-columns: 285px minmax(0, 1fr);
     gap: 22px;
     align-items: start;
 }
@@ -227,21 +231,21 @@ input:focus-visible {
 .section,
 .stat,
 .navigation {
-    background: var(--surface);
+    background: var(--white);
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
 }
 
 .profile-card {
     position: sticky;
-    top: 95px;
+    top: 20px;
     overflow: hidden;
-    padding: 0 22px 22px;
+    padding: 0 22px 24px;
     border-radius: 20px;
 }
 
 .profile-banner {
-    height: 92px;
+    height: 95px;
     margin: 0 -22px;
     background:
         radial-gradient(circle at 85% 10%, #b9b3ff 0, transparent 25%),
@@ -249,18 +253,18 @@ input:focus-visible {
 }
 
 .avatar {
-    width: 88px;
-    height: 88px;
-    margin-top: -45px;
-    margin-bottom: 15px;
     position: relative;
     display: grid;
     place-items: center;
+    width: 88px;
+    height: 88px;
+    margin-top: -45px;
+    margin-bottom: 14px;
     border: 5px solid white;
     border-radius: 25px;
     background: linear-gradient(145deg, #e9e7ff, #d8e9ff);
-    color: #5147e9;
-    font-size: 28px;
+    color: var(--purple);
+    font-size: 27px;
     font-weight: 900;
     box-shadow: 0 7px 22px #1d285b18;
 }
@@ -270,7 +274,7 @@ input:focus-visible {
     color: var(--navy);
     font-size: 23px;
     font-weight: 850;
-    line-height: 1.3;
+    line-height: 1.35;
     letter-spacing: -.5px;
     overflow-wrap: anywhere;
 }
@@ -289,96 +293,61 @@ input:focus-visible {
     padding: 8px 11px;
     border: 1px solid #c6f2e1;
     border-radius: 9px;
-    background: var(--teal-light);
+    background: var(--green-light);
     color: #087c5d;
     font-size: 11px;
     font-weight: 800;
 }
 
-.badge-check {
-    width: 19px;
-    height: 19px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: var(--teal);
-    color: white;
-}
-
 .divider {
     height: 1px;
-    margin: 21px 0;
+    margin: 20px 0;
     background: var(--border);
 }
 
 .detail {
-    margin-bottom: 17px;
-}
-
-.detail:last-child {
-    margin-bottom: 0;
+    margin-top: 16px;
+    min-width: 0;
 }
 
 .detail label {
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
     color: var(--muted);
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .detail strong {
     color: var(--navy);
-    font-size: 13px;
-    font-weight: 750;
+    font-size: 12px;
     overflow-wrap: anywhere;
 }
 
-.copy-button {
-    margin-left: 6px;
-    padding: 4px 8px;
-    border: 1px solid #e1e0ff;
-    border-radius: 7px;
-    background: var(--purple-light);
-    color: var(--purple);
-    font-size: 10px;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.copy-button:hover {
-    background: var(--purple);
-    color: white;
-}
-
-.validity {
-    color: var(--teal) !important;
-}
-
-.profile-metric {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 13px;
-    border: 1px solid #e5e4ff;
-    border-radius: 12px;
-    background: #f7f6ff;
-}
-
-.profile-metric span {
+.detail p {
+    margin: 3px 0 0;
     color: var(--muted);
     font-size: 11px;
 }
 
-.profile-metric strong {
-    color: var(--purple);
-    font-size: 13px;
-    text-align: right;
+.validity {
+    color: var(--green) !important;
 }
 
-/* RIGHT CONTENT */
+.copy-button {
+    padding: 3px 7px;
+    margin-left: 5px;
+    border: 0;
+    border-radius: 5px;
+    background: var(--purple-light);
+    color: var(--purple);
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 750;
+}
 
-.content {
+/* STATS */
+
+.content-column {
     min-width: 0;
 }
 
@@ -390,166 +359,93 @@ input:focus-visible {
 }
 
 .stat {
-    position: relative;
-    overflow: hidden;
     min-width: 0;
-    padding: 19px;
-    border-radius: 16px;
-    transition: transform .22s ease, box-shadow .22s ease;
+    padding: 17px 18px;
+    border-radius: 15px;
+    transition: transform .2s ease, box-shadow .2s ease;
 }
 
 .stat:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px #1b275b10;
-}
-
-.stat::after {
-    content: "";
-    position: absolute;
-    right: -22px;
-    bottom: -34px;
-    width: 95px;
-    height: 95px;
-    border-radius: 50%;
-    background: var(--purple-light);
-    opacity: .7;
-}
-
-.stat:nth-child(2)::after {
-    background: var(--teal-light);
-}
-
-.stat:nth-child(3)::after {
-    background: #fff1df;
+    box-shadow: 0 16px 35px #1b275b12;
 }
 
 .stat-label {
     display: block;
-    position: relative;
-    z-index: 1;
     color: var(--muted);
     font-size: 11px;
-    font-weight: 650;
 }
 
 .stat strong {
     display: block;
-    position: relative;
-    z-index: 1;
-    margin-top: 8px;
+    margin-top: 4px;
     color: var(--navy);
-    font-size: clamp(20px, 2.5vw, 29px);
-    font-weight: 900;
-    line-height: 1.2;
+    font-size: clamp(19px, 2vw, 25px);
+    font-weight: 850;
     overflow-wrap: anywhere;
 }
 
 .stat strong.green {
-    color: var(--teal);
-    font-size: 19px;
-}
-
-.stat-icon {
-    display: inline-grid;
-    place-items: center;
-    width: 31px;
-    height: 31px;
-    margin-bottom: 12px;
-    border-radius: 10px;
-    background: var(--purple-light);
-    color: var(--purple);
-    font-size: 15px;
-    font-weight: 900;
-}
-
-.stat:nth-child(2) .stat-icon {
-    background: var(--teal-light);
-    color: var(--teal);
-}
-
-.stat:nth-child(3) .stat-icon {
-    background: #fff1df;
-    color: #b36c16;
+    color: var(--green);
+    font-size: 17px;
 }
 
 /* NAVIGATION */
 
 .navigation {
     position: sticky;
-    top: 76px;
-    z-index: 50;
+    top: 0;
+    z-index: 10;
     display: flex;
     gap: 5px;
     overflow-x: auto;
+    padding: 6px;
     margin-bottom: 17px;
-    padding: 7px;
-    border-radius: 14px;
+    border-radius: 13px;
     scrollbar-width: thin;
 }
 
 .navigation a {
-    flex-shrink: 0;
-    padding: 10px 14px;
-    border-radius: 9px;
-    color: #6f7892;
-    text-decoration: none;
-    font-size: 12px;
+    flex: 0 0 auto;
+    padding: 10px 13px;
+    border-radius: 8px;
+    color: #596781;
+    font-size: 11px;
     font-weight: 750;
+    text-decoration: none;
+    white-space: nowrap;
     transition: .2s ease;
 }
 
-.navigation a:hover {
-    background: #f1f0ff;
-    color: var(--purple);
-}
-
+.navigation a:hover,
 .navigation a.active {
-    background: var(--navy);
+    background: var(--navy2);
     color: white;
-    box-shadow: 0 4px 12px #10193625;
 }
 
 /* SECTIONS */
 
 .section {
-    min-width: 0;
+    padding: 22px;
     margin-bottom: 17px;
-    padding: 23px;
-    border-radius: 18px;
-    scroll-margin-top: 155px;
-    animation: fadeUp .5s ease both;
+    border-radius: 17px;
+    scroll-margin-top: 80px;
+    transition: box-shadow .2s ease, transform .2s ease;
 }
 
-.section-header {
+.section:hover {
+    box-shadow: 0 17px 40px #1b275b0c;
+}
+
+.section-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
     gap: 12px;
-    margin-bottom: 19px;
+    margin-bottom: 17px;
 }
 
-.section-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 0;
-}
-
-.section-icon {
-    width: 41px;
-    height: 41px;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    border-radius: 13px;
-    background: var(--purple-light);
-    color: var(--purple);
-    font-size: 17px;
-    font-weight: 900;
-}
-
-.section h2 {
+.section-heading h2 {
     margin: 0;
     color: var(--navy);
     font-size: 18px;
@@ -557,8 +453,8 @@ input:focus-visible {
     letter-spacing: -.35px;
 }
 
-.section-description {
-    margin: 4px 0 0;
+.section-subtitle {
+    margin: 3px 0 0;
     color: var(--muted);
     font-size: 11px;
 }
@@ -566,24 +462,21 @@ input:focus-visible {
 .pill {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 6px 10px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: #f8f9fd;
-    color: #67718b;
+    padding: 5px 9px;
+    border-radius: 7px;
+    background: #f0f3f8;
+    color: #586681;
     font-size: 10px;
     font-weight: 800;
+    white-space: nowrap;
 }
 
 .pill.green {
-    border-color: #c6f2e1;
-    background: var(--teal-light);
-    color: #087c5d;
+    background: var(--green-light);
+    color: var(--green);
 }
 
 .pill.purple {
-    border-color: #e1dfff;
     background: var(--purple-light);
     color: var(--purple);
 }
@@ -592,20 +485,20 @@ input:focus-visible {
 
 .overview-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
 }
 
-.overview-panel {
+.subcard {
     min-width: 0;
-    padding: 18px;
+    padding: 17px;
     border: 1px solid var(--border);
-    border-radius: 14px;
-    background: linear-gradient(145deg, #fbfcff, #f7f8fd);
+    border-radius: 12px;
+    background: #fafbfe;
 }
 
-.overview-panel h3 {
-    margin: 0 0 17px;
+.subcard h3 {
+    margin: 0 0 14px;
     color: var(--navy);
     font-size: 13px;
     font-weight: 850;
@@ -613,79 +506,82 @@ input:focus-visible {
 
 .fields {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px 13px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px 18px;
+}
+
+.field {
+    min-width: 0;
 }
 
 .field label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     color: var(--muted);
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .field strong {
     display: block;
     color: var(--navy);
     font-size: 12px;
-    font-weight: 750;
     overflow-wrap: anywhere;
 }
 
-.summary-line {
+.progress-row {
+    margin-bottom: 14px;
+}
+
+.progress-row:last-child {
+    margin-bottom: 0;
+}
+
+.progress-label {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
-    margin: 13px 0 7px;
+    gap: 12px;
+    margin-bottom: 6px;
+    color: #64708a;
     font-size: 11px;
 }
 
-.summary-line span {
-    color: #6c7690;
+.progress-label strong {
+    color: var(--navy);
 }
 
-.summary-line strong {
-    color: var(--teal);
-    text-align: right;
-}
-
-.track {
-    height: 6px;
+.progress-track {
+    height: 5px;
     overflow: hidden;
     border-radius: 20px;
-    background: #e8ebf3;
+    background: #e6eaf2;
 }
 
-.fill {
+.progress-fill {
+    width: 0;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(90deg, #09a77c, #42d6a6);
-    transition: width .8s ease;
+    background: linear-gradient(90deg, #10b981, #42d5a3);
 }
 
 /* SKILLS */
 
-.search {
+.search-box {
     width: 100%;
-    padding: 13px 15px;
-    margin-bottom: 15px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    outline: none;
-    background: #fbfcff;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    border: 1px solid #dce2ef;
+    border-radius: 10px;
+    background: #fff;
     color: var(--text);
-    font-size: 12px;
-    transition: border-color .2s, box-shadow .2s;
 }
 
-.search:focus {
-    border-color: var(--purple);
-    box-shadow: 0 0 0 4px #635bff12;
+.search-box::placeholder {
+    color: #9ba4b7;
 }
 
 .skill-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
 }
 
@@ -695,207 +591,173 @@ input:focus-visible {
     gap: 9px;
     min-width: 0;
     padding: 12px;
-    border: 1px solid #e5e8f6;
-    border-radius: 11px;
-    background: #fafaff;
-    transition: transform .2s, border-color .2s, background .2s;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: linear-gradient(135deg, #fff, #f8f9ff);
+    transition: .2s ease;
 }
 
 .skill-card:hover {
-    transform: translateY(-2px);
     border-color: #c9c5ff;
-    background: #f3f2ff;
+    background: var(--purple-light);
+    transform: translateY(-2px);
 }
 
 .skill-dot {
-    width: 8px;
-    height: 8px;
-    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
     border-radius: 50%;
     background: var(--purple);
-    box-shadow: 0 0 0 4px #635bff12;
 }
 
 .skill-name {
     min-width: 0;
-    color: var(--navy);
+    color: var(--navy2);
     font-size: 12px;
-    font-weight: 750;
+    font-weight: 650;
     overflow-wrap: anywhere;
 }
 
 /* EDUCATION */
 
-.education-list {
-    display: grid;
-    gap: 13px;
-}
-
 .education-card {
     overflow: hidden;
     border: 1px solid var(--border);
-    border-radius: 14px;
-    background: white;
-    transition: border-color .2s, transform .2s;
-}
-
-.education-card:hover {
-    border-color: #cbc7ff;
-    transform: translateY(-2px);
+    border-radius: 12px;
 }
 
 .education-top {
     display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 17px;
-    background: linear-gradient(100deg, #f3f2ff, #f8faff);
-}
-
-.education-icon {
-    width: 43px;
-    height: 43px;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    border-radius: 13px;
-    background: white;
-    color: var(--purple);
-    font-size: 20px;
-    box-shadow: 0 4px 12px #20285b0c;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px;
+    background: linear-gradient(100deg, #f1f4ff, #fafbff);
 }
 
 .education-top h3 {
     margin: 0;
     color: var(--navy);
-    font-size: 15px;
-    font-weight: 850;
+    font-size: 14px;
 }
 
 .education-top p {
     margin: 3px 0 0;
-    color: #737d97;
+    color: var(--muted);
     font-size: 12px;
-}
-
-.education-body {
-    padding: 17px;
 }
 
 .education-fields {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    padding: 16px;
 }
 
 /* EXPERIENCE */
 
 .experience-list {
     display: grid;
-    gap: 13px;
+    gap: 12px;
 }
 
 .experience-card {
     display: grid;
-    grid-template-columns: 48px minmax(0, 1fr);
+    grid-template-columns: 43px minmax(0, 1fr);
+    gap: 13px;
     align-items: start;
-    gap: 14px;
-    padding: 17px;
+    padding: 15px;
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: 12px;
     background: white;
-    transition: border-color .2s, transform .2s, box-shadow .2s;
+    transition: .2s ease;
 }
 
 .experience-card:hover {
-    transform: translateY(-2px);
     border-color: #c9c5ff;
-    box-shadow: 0 9px 24px #20285b09;
+    box-shadow: 0 8px 20px #1b275b0a;
 }
 
 .company-logo {
-    width: 48px;
-    height: 48px;
     display: grid;
     place-items: center;
-    border: 1px solid #e2e0ff;
-    border-radius: 14px;
-    background: linear-gradient(145deg, #f0efff, #e8efff);
+    width: 43px;
+    height: 43px;
+    border-radius: 11px;
+    background: linear-gradient(145deg, #f0efff, #e5edff);
     color: var(--purple);
-    font-size: 19px;
+    font-size: 15px;
     font-weight: 900;
 }
 
-.company-name {
+.experience-info {
+    min-width: 0;
+}
+
+.experience-info h3 {
     margin: 0;
     color: var(--navy);
-    font-size: 15px;
-    font-weight: 850;
+    font-size: 13px;
     overflow-wrap: anywhere;
 }
 
-.job-title {
-    margin-top: 4px;
-    color: #535f7c;
+.experience-info p {
+    margin: 3px 0;
+    color: #586781;
     font-size: 12px;
-    font-weight: 700;
 }
 
-.job-period {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 5px 9px;
-    border-radius: 7px;
-    background: #f1f3fa;
-    color: #69748d;
+.experience-info small {
+    color: var(--muted);
     font-size: 11px;
-    font-weight: 700;
 }
 
-/* VERIFICATION CHECKS */
+/* EMPTY STATE */
+
+.empty-state {
+    padding: 17px;
+    border: 1px dashed #dce2ee;
+    border-radius: 11px;
+    color: var(--muted);
+    font-size: 12px;
+    background: #fbfcff;
+}
+
+/* CHECKS */
 
 .check-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
 }
 
 .check-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px;
+    gap: 10px;
+    min-width: 0;
+    padding: 12px;
     border: 1px solid var(--border);
-    border-radius: 12px;
-    background: #fcfdff;
+    border-radius: 10px;
+    background: white;
 }
 
-.check-mark {
-    width: 35px;
-    height: 35px;
-    flex-shrink: 0;
+.check-icon {
     display: grid;
     place-items: center;
-    border-radius: 11px;
-    background: var(--teal-light);
-    color: var(--teal);
-    font-size: 17px;
+    flex: 0 0 26px;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    background: var(--green-light);
+    color: var(--green);
     font-weight: 900;
 }
 
 .check-item strong {
-    display: block;
     color: var(--navy);
-    font-size: 12px;
-    font-weight: 800;
-}
-
-.check-item small {
-    display: block;
-    margin-top: 3px;
-    color: var(--teal);
-    font-size: 10px;
-    font-weight: 750;
+    font-size: 11px;
+    overflow-wrap: anywhere;
 }
 
 /* JOB ROLES */
@@ -903,132 +765,81 @@ input:focus-visible {
 .role-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 9px;
 }
 
-.role-tag {
+.role-chip {
+    padding: 9px 12px;
+    border: 1px solid #d7f0e6;
+    border-radius: 9px;
+    background: #eefaf5;
+    color: #087957;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+/* FULL RESUME */
+
+.access-box {
+    padding: 20px;
+    border: 1px solid #e0ddff;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #faf9ff, #f0efff);
+}
+
+.access-box h3 {
+    margin: 0 0 7px;
+    color: var(--navy);
+    font-size: 15px;
+}
+
+.access-box p {
+    margin: 0 0 16px;
+    color: #66718a;
+    font-size: 12px;
+}
+
+.primary-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    padding: 11px 14px;
-    border: 1px solid #d9eee6;
-    border-radius: 11px;
-    background: #effaf5;
-    color: #147856;
-    font-size: 12px;
-    font-weight: 800;
-    transition: transform .2s, background .2s;
-}
-
-.role-tag:hover {
-    transform: translateY(-2px);
-    background: #ddf7ec;
-}
-
-.role-tag span {
-    font-size: 14px;
-}
-
-/* EMPTY STATES */
-
-.empty {
-    padding: 17px;
-    border: 1px dashed #dce1ed;
-    border-radius: 12px;
-    background: #fafbff;
-    color: var(--muted);
-    font-size: 12px;
-}
-
-/* ACCESS SECTION */
-
-.access-card {
-    padding: 22px;
-    border: 1px solid #dcdafe;
-    border-radius: 15px;
-    background:
-        radial-gradient(circle at 100% 0%, #e7e5ff, transparent 45%),
-        #f8f7ff;
-}
-
-.access-card p {
-    margin: 0;
-    color: #6e7892;
-    font-size: 12px;
-}
-
-.official-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 16px;
-    padding: 10px 14px;
-    border-radius: 10px;
+    padding: 11px 15px;
+    border: 0;
+    border-radius: 9px;
     background: var(--navy);
     color: white;
     text-decoration: none;
     font-size: 12px;
-    font-weight: 800;
-    transition: transform .2s, background .2s;
+    font-weight: 750;
+    cursor: pointer;
+    transition: .2s ease;
 }
 
-.official-link:hover {
-    transform: translateY(-2px);
+.primary-button:hover {
     background: var(--purple);
+    transform: translateY(-2px);
 }
-
-/* FOOTER */
 
 footer {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-top: 23px;
-    margin-top: 14px;
-    border-top: 1px solid #e0e5f0;
+    gap: 15px;
+    padding: 20px 30px;
+    border-top: 1px solid var(--border);
     color: var(--muted);
-    font-size: 11px;
-}
-
-.footer-brand {
-    color: var(--navy);
-    font-weight: 850;
-}
-
-/* ANIMATIONS */
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-    }
+    font-size: 10px;
 }
 
 /* RESPONSIVE */
 
-@media (max-width: 1050px) {
+@media (max-width: 1000px) {
     .container {
-        padding: 25px 20px 32px;
+        padding: 25px 20px 35px;
     }
 
     .main-layout {
-        grid-template-columns: 255px minmax(0, 1fr);
+        grid-template-columns: 245px minmax(0, 1fr);
         gap: 15px;
     }
 
@@ -1042,31 +853,45 @@ footer {
         margin-right: -17px;
     }
 
-    .overview-grid {
-        grid-template-columns: 1fr;
+    .stats {
+        gap: 9px;
     }
 
-    .skill-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .stat {
+        padding: 14px;
+    }
+
+    .section {
+        padding: 18px;
     }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 760px) {
     .topbar {
         padding: 12px 17px;
     }
 
-    .brand-name {
-        font-size: 21px;
+    .brand-logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .brand-name-image {
+        width: 103px;
+    }
+
+    .header-right {
+        font-size: 10px;
     }
 
     .container {
-        padding: 20px 14px 28px;
+        padding: 23px 14px 30px;
     }
 
     .page-heading {
         align-items: flex-start;
         flex-direction: column;
+        gap: 13px;
     }
 
     .record-id {
@@ -1078,77 +903,93 @@ footer {
     }
 
     .profile-card {
-        position: static;
+        position: relative;
+        top: auto;
     }
 
     .profile-banner {
-        height: 80px;
+        height: 78px;
+    }
+
+    .navigation {
+        top: 0;
     }
 
     .stats {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 8px;
     }
 
     .stat {
-        padding: 13px 10px;
+        padding: 12px 10px;
+    }
+
+    .stat-label {
+        font-size: 10px;
     }
 
     .stat strong {
-        font-size: 20px;
+        font-size: 19px;
     }
 
     .stat strong.green {
-        font-size: 15px;
+        font-size: 14px;
     }
 
-    .navigation {
-        top: 74px;
+    .overview-grid {
+        grid-template-columns: 1fr;
     }
 
     .section {
         padding: 17px;
-        border-radius: 15px;
+        border-radius: 14px;
     }
 
-    .fields,
-    .education-fields {
-        grid-template-columns: 1fr 1fr;
+    footer {
+        padding: 18px 15px;
     }
 }
 
 @media (max-width: 450px) {
     .header-right {
-        font-size: 10px;
+        font-size: 9px;
+        gap: 5px;
     }
 
-    .brand-mark {
-        width: 38px;
-        height: 38px;
+    .brand-logo {
+        width: 36px;
+        height: 36px;
+        padding: 3px;
     }
 
-    .brand-name {
-        font-size: 19px;
+    .brand-name-image {
+        width: 88px;
     }
 
-    .brand-tagline {
-        font-size: 8px;
-        letter-spacing: 1.2px;
+    .brand-copy small {
+        font-size: 7px;
+        letter-spacing: 1px;
     }
 
     .stats {
-        grid-template-columns: 1fr;
+        gap: 6px;
     }
 
     .stat {
-        padding: 15px;
+        padding: 10px 7px;
     }
 
-    .stat-icon {
-        margin-bottom: 7px;
+    .stat strong {
+        font-size: 16px;
     }
 
-    .overview-grid,
+    .stat strong.green {
+        font-size: 12px;
+    }
+
+    .stat-label {
+        font-size: 9px;
+    }
+
     .fields,
     .education-fields,
     .check-grid {
@@ -1157,7 +998,7 @@ footer {
 
     .skill-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 8px;
+        gap: 7px;
     }
 
     .skill-card {
@@ -1168,8 +1009,23 @@ footer {
         font-size: 11px;
     }
 
-    .section h2 {
+    .section-heading h2 {
         font-size: 16px;
+    }
+
+    .experience-card {
+        grid-template-columns: 35px minmax(0, 1fr);
+        padding: 11px;
+        gap: 9px;
+    }
+
+    .company-logo {
+        width: 35px;
+        height: 35px;
+    }
+
+    footer {
+        flex-direction: column;
     }
 }
 
@@ -1178,26 +1034,39 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <header class="topbar">
-
     <a class="brand" href="https://naineet.in/" aria-label="Naineet home">
-        <span class="brand-mark">N</span>
-        <span>
-            <span class="brand-name">naineet</span>
-            <span class="brand-tagline">TRUST &amp; VERIFICATION</span>
+        <img
+            class="brand-logo"
+            src="https://github.com/soniya7788/LandingPage-Naineet/blob/main/Naineet_Logo.png?raw=true"
+            alt="Naineet logo">
+
+        <span class="brand-copy">
+            <img
+                class="brand-name-image"
+                src="https://github.com/soniya7788/LandingPage-Naineet/blob/main/naineet_name%20(2).png?raw=true"
+                alt="Naineet">
+
+            <small>TRUST &amp; VERIFICATION</small>
         </span>
     </a>
 
     <div class="header-right">
         <span class="header-dot"></span>
-        Candidate verification
+        Candidate Verification
     </div>
-
 </header>
 
 <main class="container">
@@ -1223,16 +1092,12 @@ footer {
 
     <div class="main-layout" id="profileLayout" hidden>
 
-        <!-- LEFT PROFILE CARD -->
-
         <aside class="profile-card" id="profile">
-
             <div class="profile-banner"></div>
 
             <div class="avatar" id="avatar">VR</div>
 
             <h2 id="candidateName">—</h2>
-
             <div class="role" id="candidateHeadline">—</div>
 
             <div class="verified-badge" id="candidateStatus">
@@ -1274,44 +1139,32 @@ footer {
                 <strong id="institution">—</strong>
             </div>
 
-            <div class="profile-metric">
-                <span>Total experience</span>
+            <div class="detail">
+                <label>Total experience</label>
                 <strong id="totalExperience">—</strong>
             </div>
-
         </aside>
 
-        <!-- RIGHT PROFILE CONTENT -->
-
-        <div class="content">
-
-            <!-- STATISTICS -->
+        <div class="content-column">
 
             <div class="stats">
-
                 <div class="stat">
-                    <span class="stat-icon">✓</span>
                     <span class="stat-label">Verification status</span>
                     <strong class="green" id="statusStat">—</strong>
                 </div>
 
                 <div class="stat">
-                    <span class="stat-icon">✓</span>
                     <span class="stat-label">Verified checks</span>
-                    <strong id="checksCount">—</strong>
+                    <strong id="checksStat">—</strong>
                 </div>
 
                 <div class="stat">
-                    <span class="stat-icon">✦</span>
-                    <span class="stat-label">Technical skills</span>
-                    <strong id="skillsCount">—</strong>
+                    <span class="stat-label">Skills listed</span>
+                    <strong id="skillsStat">—</strong>
                 </div>
-
             </div>
 
-            <!-- NAVIGATION -->
-
-            <nav class="navigation" id="navigation">
+            <nav class="navigation" aria-label="Profile sections">
                 <a href="#overview" class="active">Overview</a>
                 <a href="#skills">Skills</a>
                 <a href="#education">Education</a>
@@ -1319,42 +1172,31 @@ footer {
                 <a href="#internships">Internships</a>
                 <a href="#verification">Verification</a>
                 <a href="#roles">Suitable Roles</a>
+                <a href="#full-resume">Full Resume</a>
             </nav>
 
-            <!-- OVERVIEW -->
-
             <section class="section" id="overview">
-
-                <div class="section-header">
-                    <div class="section-title">
-                        <div class="section-icon">⌂</div>
-                        <div>
-                            <h2>Professional Profile</h2>
-                            <p class="section-description">
-                                Candidate information from the verification record
-                            </p>
-                        </div>
+                <div class="section-heading">
+                    <div>
+                        <h2>Professional Profile</h2>
+                        <p class="section-subtitle">
+                            Candidate details returned by the verification record.
+                        </p>
                     </div>
-
-                    <span class="pill green" id="overviewStatus">
-                        Verified profile
-                    </span>
+                    <span class="pill green" id="overviewStatus">Verified</span>
                 </div>
 
                 <div class="overview-grid">
-
-                    <div class="overview-panel">
+                    <div class="subcard">
                         <h3>Candidate Details</h3>
-
                         <div class="fields">
-
                             <div class="field">
                                 <label>Full name</label>
                                 <strong id="overviewName">—</strong>
                             </div>
 
                             <div class="field">
-                                <label>Professional headline</label>
+                                <label>Current role</label>
                                 <strong id="overviewHeadline">—</strong>
                             </div>
 
@@ -1367,329 +1209,253 @@ footer {
                                 <label>Institution</label>
                                 <strong id="overviewInstitution">—</strong>
                             </div>
-
                         </div>
                     </div>
 
-                    <div class="overview-panel">
-                        <h3>Verification Progress</h3>
-                        <div id="summaryChecks"></div>
+                    <div class="subcard">
+                        <h3>Verification Summary</h3>
+                        <div id="overviewChecks"></div>
                     </div>
-
                 </div>
-
             </section>
 
-            <!-- SKILLS -->
-
             <section class="section" id="skills">
-
-                <div class="section-header">
-                    <div class="section-title">
-                        <div class="section-icon">✦</div>
-                        <div>
-                            <h2>Technical Skills</h2>
-                            <p class="section-description">
-                                Skills listed in the verification record
-                            </p>
-                        </div>
+                <div class="section-heading">
+                    <div>
+                        <h2>Technical Skills</h2>
+                        <p class="section-subtitle">
+                            Skills listed in the verification record.
+                        </p>
                     </div>
-
-                    <span class="pill purple" id="skillsPill">0 skills</span>
+                    <span class="pill purple" id="skillsCount">0 skills</span>
                 </div>
 
                 <input
-                    type="search"
-                    class="search"
+                    class="search-box"
                     id="skillSearch"
-                    placeholder="⌕  Search technical skills..."
-                    aria-label="Search technical skills"
-                >
+                    type="search"
+                    placeholder="Search skills..."
+                    aria-label="Search technical skills">
 
                 <div class="skill-grid" id="skillGrid"></div>
-
+                <div id="noSkills" class="empty-state" hidden>
+                    No skills match your search.
+                </div>
             </section>
-
-            <!-- EDUCATION -->
 
             <section class="section" id="education">
-
-                <div class="section-header">
-                    <div class="section-title">
-                        <div class="section-icon">▤</div>
-                        <div>
-                            <h2>Education &amp; Qualifications</h2>
-                            <p class="section-description">
-                                Academic details available in the record
-                            </p>
-                        </div>
+                <div class="section-heading">
+                    <div>
+                        <h2>Education &amp; Qualifications</h2>
+                        <p class="section-subtitle">
+                            Academic information provided in the record.
+                        </p>
                     </div>
-
-                    <span class="pill green" id="educationStatus">—</span>
+                    <span class="pill green">Verified</span>
                 </div>
 
-                <div class="education-list" id="educationList"></div>
-
+                <div id="educationList"></div>
             </section>
 
-            <!-- EXPERIENCE -->
-
             <section class="section" id="experience">
-
-                <div class="section-header">
-                    <div class="section-title">
-                        <div class="section-icon">▣</div>
-                        <div>
-                            <h2>Work Experience</h2>
-                            <p class="section-description">
-                                Employment records provided for verification
-                            </p>
-                        </div>
+                <div class="section-heading">
+                    <div>
+                        <h2>Work Experience</h2>
+                        <p class="section-subtitle">
+                            Employment records returned by the verification API.
+                        </p>
                     </div>
-
-                    <span class="pill green" id="experienceStatus">—</span>
+                    <span class="pill green" id="experienceCount">0 records</span>
                 </div>
 
                 <div class="experience-list" id="experienceList"></div>
-
             </section>
-
-            <!-- INTERNSHIPS -->
 
             <section class="section" id="internships">
-
-                <div class="section-header">
-                    <div class="section-title">
-                        <div class="section-icon">⌘</div>
-                        <div>
-                            <h2>Internships</h2>
-                            <p class="section-description">
-                                Internship information available in the record
-                            </p>
-                        </div>
+                <div class="section-heading">
+                    <div>
+                        <h2>Internships</h2>
+                        <p class="section-subtitle">
+                            Internship information available in the record.
+                        </p>
                     </div>
-
-                    <span class="pill" id="internshipTotal">—</span>
+                    <span class="pill" id="internshipCount">0 records</span>
                 </div>
 
-                <div class="experience-list" id="internshipList"></div>
-
+                <div id="internshipList"></div>
             </section>
-
-            <!-- VERIFICATION -->
 
             <section class="section" id="verification">
-
-                <div class="section-header">
-                    <div class="section-title">
-                        <div class="section-icon">✓</div>
-                        <div>
-                            <h2>Verification Summary</h2>
-                            <p class="section-description">
-                                Status of the checks returned by the record
-                            </p>
-                        </div>
+                <div class="section-heading">
+                    <div>
+                        <h2>Verification Summary</h2>
+                        <p class="section-subtitle">
+                            Checks explicitly returned by the verification record.
+                        </p>
                     </div>
-
-                    <span class="pill green" id="verificationPill">—</span>
+                    <span class="pill green" id="verificationCount">0/0 checks</span>
                 </div>
 
-                <div class="check-grid" id="verificationChecks"></div>
-
+                <div class="check-grid" id="checkGrid"></div>
             </section>
-
-            <!-- SUITABLE ROLES -->
 
             <section class="section" id="roles">
-
-                <div class="section-header">
-                    <div class="section-title">
-                        <div class="section-icon">↗</div>
-                        <div>
-                            <h2>Suitable Job Roles</h2>
-                            <p class="section-description">
-                                Roles listed in the candidate record
-                            </p>
-                        </div>
+                <div class="section-heading">
+                    <div>
+                        <h2>Suitable Job Roles</h2>
+                        <p class="section-subtitle">
+                            Roles listed in the verification record.
+                        </p>
                     </div>
                 </div>
 
-                <div class="role-list" id="qualifiedRoles"></div>
-
+                <div class="role-list" id="roleList"></div>
             </section>
 
-            <!-- FULL RESUME ACCESS -->
-
-            <section class="section" id="fullResume">
-
-                <div class="access-card">
-
-                    <div class="section-header">
-                        <div class="section-title">
-                            <div class="section-icon">▤</div>
-                            <div>
-                                <h2>Full Resume Access</h2>
-                                <p class="section-description">
-                                    Official candidate verification
-                                </p>
-                            </div>
-                        </div>
+            <section class="section" id="full-resume">
+                <div class="section-heading">
+                    <div>
+                        <h2>Full Resume Access</h2>
+                        <p class="section-subtitle">
+                            Access to the full resume may require login.
+                        </p>
                     </div>
+                </div>
 
-                    <p id="accessNote"></p>
+                <div class="access-box">
+                    <h3>Official candidate verification</h3>
+                    <p id="accessNote">
+                        This profile displays information returned by the verification record.
+                    </p>
 
                     <a
-                        class="official-link"
+                        class="primary-button"
                         id="officialLink"
                         href="https://naineet.in/"
                         target="_blank"
-                        rel="noopener noreferrer"
-                        hidden
-                    >
+                        rel="noopener noreferrer">
                         Open Official Verification ↗
                     </a>
-
                 </div>
-
             </section>
 
         </div>
-
     </div>
-
-    <footer>
-        <span class="footer-brand">naineet · TRUST &amp; VERIFICATION</span>
-        <span>© <span id="currentYear"></span> Naineet Tech</span>
-    </footer>
-
 </main>
 
+<footer>
+    <span>© 2026 Naineet Tech · Trust &amp; Verification</span>
+    <span>Candidate Verification</span>
+</footer>
+
 <script>
-"use strict";
-
 /*
-=========================================================
-DEMO DATA
-=========================================================
+ * DEMO DATA
+ * This uses the JSON record supplied for NTV-2026-0002.
+ * No private contact details are invented or displayed.
+ *
+ * Later, replace this local lookup with your backend API.
+ */
 
-This page currently uses the sample JSON supplied for:
-NTV-2026-0002
+const DEMO_RECORDS = {
+    "NTV-2026-0002": {
+        verificationNumber: "NTV-2026-0002",
+        shortCode: "zjmm6bb",
+        verificationUrl: "https://naineet.in/vcv/zjmm6bb",
+        status: "VALID",
+        verificationDate: "2026-10-22",
+        validTill: "2027-04-22",
 
-When your backend is ready, replace the DEMO_DATA approach
-with your real API request.
+        candidateName: "Vanshaj Rathi",
+        headline: "Senior Software Engineer",
 
-IMPORTANT:
-This is demonstration data, not a live database connection.
-*/
+        skills: [
+            "Java 8/17",
+            "Spring Boot",
+            "Spring Data JPA",
+            "Hibernate",
+            "Oracle",
+            "MySQL",
+            "Git",
+            "Docker",
+            "Apache Kafka",
+            "Microservices",
+            "REST APIs",
+            "Java WEB Services",
+            "DBMS",
+            "HTML5",
+            "CSS 3",
+            "JUnit"
+        ],
 
-const DEMO_DATA = {
-    "verificationNumber": "NTV-2026-0002",
-    "shortCode": "zjmm6bb",
-    "verificationUrl": "https://naineet.in/vcv/zjmm6bb",
-    "status": "VALID",
-    "verificationDate": "2026-10-22",
-    "validTill": "2027-04-22",
-    "candidateName": "Vanshaj Rathi",
-    "headline": "Senior Software Engineer",
+        qualification: {
+            degree: "B. Tech",
+            branch: "Computer Science",
+            institution: "ABES Engineering College"
+        },
 
-    "skills": [
-        "Java 8/17",
-        "Spring Boot",
-        "Spring Data JPA",
-        "Hibernate",
-        "Oracle",
-        "MySQL",
-        "Git",
-        "Docker",
-        "Apache Kafka",
-        "Microservices",
-        "REST APIs",
-        "Java WEB Services",
-        "DBMS",
-        "HTML5",
-        "CSS 3",
-        "JUnit"
-    ],
+        experience: {
+            totalLabel: "5 Years 11 Months",
+            totalMonths: 71,
+            items: [
+                {
+                    company: "Capgemini",
+                    designation: "Software Developer",
+                    durationMonths: 17
+                },
+                {
+                    company: "Tata Consultancy Services",
+                    designation: "Java Developer",
+                    durationMonths: 54
+                }
+            ]
+        },
 
-    "qualification": {
-        "degree": "B. Tech",
-        "branch": "Computer Science",
-        "institution": "ABES Engineering College"
-    },
+        internship: {
+            totalLabel: "0 Months",
+            totalMonths: 0,
+            items: []
+        },
 
-    "experience": {
-        "totalLabel": "5 Years 11 Months",
-        "totalMonths": 71,
-
-        "items": [
+        education: [
             {
-                "company": "Capgemini",
-                "designation": "Software Developer",
-                "durationMonths": 17
-            },
-            {
-                "company": "Tata Consultancy Services",
-                "designation": "Java Developer",
-                "durationMonths": 54
+                degree: "B. Tech",
+                branch: "Computer Science",
+                institution: "ABES Engineering College",
+                startYear: 2016,
+                endYear: 2020
             }
-        ]
-    },
+        ],
 
-    "internship": {
-        "totalLabel": "0 Months",
-        "totalMonths": 0,
-        "items": []
-    },
+        qualifiedRoles: [
+            "SDE II",
+            "Senior Software Engineer",
+            "Java Full Stack Developer",
+            "Java Backend Software Engineer"
+        ],
 
-    "education": [
-        {
-            "degree": "B. Tech",
-            "branch": "Computer Science",
-            "institution": "ABES Engineering College",
-            "startYear": 2016,
-            "endYear": 2020
-        }
-    ],
+        checks: {
+            identityVerified: true,
+            academicDetailsVerified: true,
+            workExperienceVerified: true,
+            skillsValidated: true
+        },
 
-    "qualifiedRoles": [
-        "SDE II",
-        "Senior Software Engineer",
-        "Java Full Stack Developer",
-        "Java Backend Software Engineer"
-    ],
-
-    "checks": {
-        "identityVerified": true,
-        "academicDetailsVerified": true,
-        "workExperienceVerified": true,
-        "skillsValidated": true
-    },
-
-    "fullResumeLoginRequired": true
+        fullResumeLoginRequired: true
+    }
 };
 
-
-/* =====================================================
-   CONFIGURATION
-===================================================== */
-
-const USE_DEMO_DATA = true;
-
-const CHECK_LABELS = {
-    identityVerified: "Identity details",
-    academicDetailsVerified: "Academic details",
-    workExperienceVerified: "Work experience",
-    skillsValidated: "Skills validated"
+/*
+ * The ID is the public verification number.
+ * The short code is the separate code used in the verification URL.
+ */
+const VERIFICATION_CODES = {
+    "NTV-2026-0002": "zjmm6bb"
 };
 
 const $ = id => document.getElementById(id);
 
-
-/* =====================================================
-   HELPER FUNCTIONS
-===================================================== */
-
-function safeText(value, fallback = "Not provided") {
+function safeText(value, fallback = "—") {
     if (value === null || value === undefined || value === "") {
         return fallback;
     }
@@ -1697,20 +1463,8 @@ function safeText(value, fallback = "Not provided") {
     return String(value);
 }
 
-function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, character => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-    })[character]);
-}
-
 function formatDate(value) {
-    if (!value) {
-        return "Not provided";
-    }
+    if (!value) return "Not provided";
 
     const date = new Date(value + "T00:00:00");
 
@@ -1718,712 +1472,482 @@ function formatDate(value) {
         return value;
     }
 
-    return new Intl.DateTimeFormat("en-IN", {
+    return date.toLocaleDateString("en-GB", {
         day: "2-digit",
         month: "long",
         year: "numeric"
-    }).format(date);
-}
-
-function showEmpty(container, message) {
-    container.innerHTML =
-        `<div class="empty">${escapeHTML(message)}</div>`;
-}
-
-function showMessage(message, isError = false) {
-    const element = $("pageMessage");
-
-    element.textContent = message;
-    element.className = isError
-        ? "message error"
-        : "message";
-
-    element.hidden = false;
-}
-
-function hideMessage() {
-    $("pageMessage").hidden = true;
-}
-
-
-/* =====================================================
-   SKILLS
-===================================================== */
-
-function renderSkills(data) {
-    const grid = $("skillGrid");
-
-    const skills = Array.isArray(data.skills)
-        ? data.skills
-        : [];
-
-    grid.innerHTML = "";
-
-    $("skillsCount").textContent = skills.length;
-    $("skillsPill").textContent = `${skills.length} skills`;
-
-    if (skills.length === 0) {
-        showEmpty(grid, "No skills were provided in this record.");
-        return;
-    }
-
-    skills.forEach(skill => {
-        const card = document.createElement("div");
-        card.className = "skill-card";
-
-        const dot = document.createElement("span");
-        dot.className = "skill-dot";
-
-        const name = document.createElement("span");
-        name.className = "skill-name";
-        name.textContent = skill;
-
-        card.append(dot, name);
-        grid.appendChild(card);
     });
 }
 
+function initials(name) {
+    return safeText(name, "VC")
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(part => part[0].toUpperCase())
+        .join("");
+}
 
-/* =====================================================
-   EDUCATION
-===================================================== */
+function makeElement(tag, className, text) {
+    const element = document.createElement(tag);
+
+    if (className) element.className = className;
+    if (text !== undefined) element.textContent = text;
+
+    return element;
+}
+
+function getQualification(data) {
+    const q = data.qualification || {};
+
+    return [
+        q.degree,
+        q.branch
+    ].filter(Boolean).join(", ") || "Not provided";
+}
+
+function getCheckLabels(checks) {
+    const labels = {
+        identityVerified: "Identity details",
+        academicDetailsVerified: "Academic details",
+        workExperienceVerified: "Work experience",
+        skillsValidated: "Skills validated"
+    };
+
+    return Object.entries(labels).map(([key, label]) => ({
+        key,
+        label,
+        verified: checks && checks[key] === true
+    }));
+}
+
+function renderChecks(data) {
+    const checks = getCheckLabels(data.checks || {});
+    const verifiedCount = checks.filter(item => item.verified).length;
+
+    $("checksStat").textContent = `${verifiedCount}/${checks.length}`;
+    $("verificationCount").textContent =
+        `${verifiedCount}/${checks.length} checks`;
+
+    $("checkGrid").replaceChildren();
+    $("overviewChecks").replaceChildren();
+
+    checks.forEach(item => {
+        const card = makeElement("div", "check-item");
+
+        const icon = makeElement(
+            "span",
+            "check-icon",
+            item.verified ? "✓" : "!"
+        );
+
+        const label = makeElement(
+            "strong",
+            "",
+            `${item.label}: ${item.verified ? "Verified" : "Not verified"}`
+        );
+
+        card.append(icon, label);
+        $("checkGrid").append(card);
+
+        const row = makeElement("div", "progress-row");
+
+        const labelRow = makeElement("div", "progress-label");
+        labelRow.append(
+            makeElement("span", "", item.label),
+            makeElement(
+                "strong",
+                "",
+                item.verified ? "Verified" : "Not verified"
+            )
+        );
+
+        const track = makeElement("div", "progress-track");
+        const fill = makeElement("div", "progress-fill");
+        fill.style.width = item.verified ? "100%" : "0%";
+
+        track.append(fill);
+        row.append(labelRow, track);
+        $("overviewChecks").append(row);
+    });
+}
+
+function renderSkills(data) {
+    const skills = Array.isArray(data.skills) ? data.skills : [];
+
+    $("skillsStat").textContent = skills.length;
+    $("skillsCount").textContent = `${skills.length} skills`;
+
+    const grid = $("skillGrid");
+    grid.replaceChildren();
+
+    skills.forEach(skill => {
+        const card = makeElement("div", "skill-card");
+        card.dataset.skill = String(skill).toLowerCase();
+
+        card.append(
+            makeElement("span", "skill-dot"),
+            makeElement("span", "skill-name", skill)
+        );
+
+        grid.append(card);
+    });
+
+    $("noSkills").hidden = skills.length > 0;
+
+    $("skillSearch").addEventListener("input", filterSkills, {
+        once: true
+    });
+}
+
+function filterSkills() {
+    const query = $("skillSearch").value.trim().toLowerCase();
+    const cards = [...$("skillGrid").querySelectorAll(".skill-card")];
+    let visible = 0;
+
+    cards.forEach(card => {
+        const matches = card.dataset.skill.includes(query);
+        card.hidden = !matches;
+
+        if (matches) visible++;
+    });
+
+    $("noSkills").hidden = visible !== 0;
+}
 
 function renderEducation(data) {
-    const container = $("educationList");
-
-    container.innerHTML = "";
-
-    const qualification = data.qualification || {};
+    const list = $("educationList");
+    list.replaceChildren();
 
     const education = Array.isArray(data.education)
         ? data.education
         : [];
 
-    $("educationStatus").textContent =
-        data.checks?.academicDetailsVerified === true
-            ? "✓ Verified"
-            : "Status unavailable";
-
-    if (education.length === 0) {
-        if (qualification.degree || qualification.institution) {
-            const card = document.createElement("article");
-            card.className = "education-card";
-
-            card.innerHTML = `
-                <div class="education-top">
-                    <div class="education-icon">▤</div>
-                    <div>
-                        <h3>${escapeHTML(safeText(qualification.degree))}</h3>
-                        <p>${escapeHTML(safeText(qualification.branch))}</p>
-                    </div>
-                </div>
-
-                <div class="education-body">
-                    <div class="education-fields">
-                        <div class="field">
-                            <label>Institution</label>
-                            <strong>${escapeHTML(safeText(qualification.institution))}</strong>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            container.appendChild(card);
-            return;
-        }
-
-        showEmpty(container, "No education details were provided.");
+    if (!education.length) {
+        list.append(
+            makeElement("div", "empty-state", "No education records are listed in the verification record.")
+        );
         return;
     }
 
     education.forEach(item => {
-        const card = document.createElement("article");
-        card.className = "education-card";
+        const card = makeElement("div", "education-card");
 
-        const hasYears = item.startYear || item.endYear;
+        const top = makeElement("div", "education-top");
+        const title = document.createElement("div");
 
-        const years = hasYears
-            ? `${item.startYear || "—"} – ${item.endYear || "—"}`
-            : "Not provided";
+        title.append(
+            makeElement(
+                "h3",
+                "",
+                [item.degree, item.branch].filter(Boolean).join(", ")
+            ),
+            makeElement(
+                "p",
+                "",
+                safeText(item.branch, "Qualification details")
+            )
+        );
 
-        card.innerHTML = `
-            <div class="education-top">
-                <div class="education-icon">▤</div>
+        top.append(
+            title,
+            makeElement("span", "pill green", "API record")
+        );
 
-                <div>
-                    <h3>${escapeHTML(safeText(item.degree, qualification.degree))}</h3>
-                    <p>${escapeHTML(safeText(item.branch, qualification.branch))}</p>
-                </div>
-            </div>
+        const fields = makeElement("div", "education-fields");
 
-            <div class="education-body">
-                <div class="education-fields">
+        const institution = makeElement("div", "field");
+        institution.append(
+            makeElement("label", "", "Institution"),
+            makeElement(
+                "strong",
+                "",
+                safeText(item.institution)
+            )
+        );
 
-                    <div class="field">
-                        <label>Institution</label>
-                        <strong>${escapeHTML(safeText(item.institution, qualification.institution))}</strong>
-                    </div>
+        const period = makeElement("div", "field");
+        period.append(
+            makeElement("label", "", "Study period"),
+            makeElement(
+                "strong",
+                "",
+                item.startYear && item.endYear
+                    ? `${item.startYear} – ${item.endYear}`
+                    : "Not provided"
+            )
+        );
 
-                    <div class="field">
-                        <label>Study period</label>
-                        <strong>${escapeHTML(years)}</strong>
-                    </div>
-
-                </div>
-            </div>
-        `;
-
-        container.appendChild(card);
+        fields.append(institution, period);
+        card.append(top, fields);
+        list.append(card);
     });
 }
 
-
-/* =====================================================
-   WORK EXPERIENCE
-===================================================== */
-
 function renderExperience(data) {
-    const container = $("experienceList");
+    const list = $("experienceList");
+    list.replaceChildren();
 
-    container.innerHTML = "";
-
-    const experience = data.experience || {};
-
-    const items = Array.isArray(experience.items)
-        ? experience.items
+    const items = data.experience &&
+        Array.isArray(data.experience.items)
+        ? data.experience.items
         : [];
 
-    $("experienceStatus").textContent =
-        data.checks?.workExperienceVerified === true
-            ? "✓ Verified"
-            : "Status unavailable";
+    $("experienceCount").textContent =
+        `${items.length} ${items.length === 1 ? "record" : "records"}`;
 
-    if (items.length === 0) {
-        showEmpty(container, "No work experience records were provided.");
+    if (!items.length) {
+        list.append(
+            makeElement("div", "empty-state", "No work experience records are listed in the verification record.")
+        );
         return;
     }
 
     items.forEach(item => {
-        const card = document.createElement("article");
-        card.className = "experience-card";
+        const card = makeElement("div", "experience-card");
+        const company = safeText(item.company, "Company");
 
-        const companyName = safeText(item.company, "Company");
-        const initial = companyName.charAt(0).toUpperCase();
+        const logo = makeElement(
+            "div",
+            "company-logo",
+            company.charAt(0).toUpperCase()
+        );
 
-        const logo = document.createElement("div");
-        logo.className = "company-logo";
-        logo.textContent = initial;
+        const info = makeElement("div", "experience-info");
 
-        const details = document.createElement("div");
+        info.append(
+            makeElement("h3", "", company),
+            makeElement(
+                "p",
+                "",
+                safeText(item.designation, "Role not provided")
+            ),
+            makeElement(
+                "small",
+                "",
+                `${safeText(item.durationMonths, "—")} months`
+            )
+        );
 
-        const title = document.createElement("h3");
-        title.className = "company-name";
-        title.textContent = companyName;
-
-        const designation = document.createElement("div");
-        designation.className = "job-title";
-        designation.textContent = safeText(item.designation);
-
-        const duration = document.createElement("div");
-        duration.className = "job-period";
-
-        duration.textContent =
-            item.durationMonths === undefined ||
-            item.durationMonths === null
-                ? "Duration not provided"
-                : `${item.durationMonths} months`;
-
-        details.append(title, designation, duration);
-
-        /* No unnecessary "API Record" badge here. */
-        card.append(logo, details);
-
-        container.appendChild(card);
+        card.append(logo, info);
+        list.append(card);
     });
 }
 
-
-/* =====================================================
-   INTERNSHIPS
-===================================================== */
-
 function renderInternships(data) {
-    const container = $("internshipList");
+    const list = $("internshipList");
+    list.replaceChildren();
 
-    container.innerHTML = "";
-
-    const internship = data.internship;
-
-    if (!internship) {
-        $("internshipTotal").textContent = "Not provided";
-
-        showEmpty(
-            container,
-            "No internship information was provided."
-        );
-
-        return;
-    }
-
-    $("internshipTotal").textContent =
-        safeText(internship.totalLabel);
-
+    const internship = data.internship || {};
     const items = Array.isArray(internship.items)
         ? internship.items
         : [];
 
-    if (items.length === 0) {
-        showEmpty(
-            container,
-            "No internship records are listed in this verification record."
-        );
+    $("internshipCount").textContent =
+        safeText(internship.totalLabel, `${items.length} records`);
 
+    if (!items.length) {
+        list.append(
+            makeElement(
+                "div",
+                "empty-state",
+                "No internship records are listed in the verification record."
+            )
+        );
         return;
     }
+
+    const cards = makeElement("div", "experience-list");
 
     items.forEach(item => {
-        const card = document.createElement("article");
-        card.className = "experience-card";
+        const card = makeElement("div", "experience-card");
+        const logo = makeElement(
+            "div",
+            "company-logo",
+            safeText(item.company, "I").charAt(0).toUpperCase()
+        );
 
-        const company = safeText(item.company, "Internship");
+        const info = makeElement("div", "experience-info");
 
-        const logo = document.createElement("div");
-        logo.className = "company-logo";
-        logo.textContent = company.charAt(0).toUpperCase();
+        info.append(
+            makeElement("h3", "", safeText(item.company)),
+            makeElement("p", "", safeText(item.designation)),
+            makeElement(
+                "small",
+                "",
+                `${safeText(item.durationMonths, "—")} months`
+            )
+        );
 
-        const details = document.createElement("div");
-
-        const title = document.createElement("h3");
-        title.className = "company-name";
-        title.textContent = company;
-
-        const designation = document.createElement("div");
-        designation.className = "job-title";
-        designation.textContent =
-            safeText(item.designation || item.role);
-
-        const duration = document.createElement("div");
-        duration.className = "job-period";
-
-        duration.textContent =
-            item.durationMonths === undefined
-                ? "Duration not provided"
-                : `${item.durationMonths} months`;
-
-        details.append(title, designation, duration);
-        card.append(logo, details);
-
-        container.appendChild(card);
+        card.append(logo, info);
+        cards.append(card);
     });
+
+    list.append(cards);
 }
-
-
-/* =====================================================
-   VERIFICATION CHECKS
-===================================================== */
-
-function renderChecks(data) {
-    const container = $("verificationChecks");
-    const summary = $("summaryChecks");
-
-    container.innerHTML = "";
-    summary.innerHTML = "";
-
-    const checks = data.checks || {};
-
-    const available = Object.keys(CHECK_LABELS).filter(key =>
-        Object.prototype.hasOwnProperty.call(checks, key)
-    );
-
-    const passed = available.filter(key =>
-        checks[key] === true
-    ).length;
-
-    $("checksCount").textContent =
-        `${passed}/${available.length}`;
-
-    $("verificationPill").textContent =
-        `${passed}/${available.length} checks`;
-
-    if (available.length === 0) {
-        showEmpty(container, "No verification checks were provided.");
-        showEmpty(summary, "Verification progress is unavailable.");
-        return;
-    }
-
-    available.forEach(key => {
-        const verified = checks[key] === true;
-        const label = CHECK_LABELS[key];
-
-        const item = document.createElement("div");
-        item.className = "check-item";
-
-        const mark = document.createElement("div");
-        mark.className = "check-mark";
-        mark.textContent = verified ? "✓" : "!";
-
-        const text = document.createElement("div");
-
-        const title = document.createElement("strong");
-        title.textContent = label;
-
-        const status = document.createElement("small");
-        status.textContent = verified ? "Verified" : "Not verified";
-
-        if (!verified) {
-            status.style.color = "#b45309";
-        }
-
-        text.append(title, status);
-        item.append(mark, text);
-
-        container.appendChild(item);
-
-        const summaryItem = document.createElement("div");
-
-        const line = document.createElement("div");
-        line.className = "summary-line";
-
-        const labelElement = document.createElement("span");
-        labelElement.textContent = label;
-
-        const statusElement = document.createElement("strong");
-        statusElement.textContent =
-            verified ? "Verified" : "Not verified";
-
-        if (!verified) {
-            statusElement.style.color = "#b45309";
-        }
-
-        line.append(labelElement, statusElement);
-
-        const track = document.createElement("div");
-        track.className = "track";
-
-        const fill = document.createElement("div");
-        fill.className = "fill";
-        fill.style.width = verified ? "100%" : "0%";
-
-        if (!verified) {
-            fill.style.background = "#e4a14b";
-        }
-
-        track.appendChild(fill);
-        summaryItem.append(line, track);
-
-        summary.appendChild(summaryItem);
-    });
-}
-
-
-/* =====================================================
-   SUITABLE JOB ROLES
-===================================================== */
 
 function renderRoles(data) {
-    const container = $("qualifiedRoles");
-
-    container.innerHTML = "";
+    const list = $("roleList");
+    list.replaceChildren();
 
     const roles = Array.isArray(data.qualifiedRoles)
         ? data.qualifiedRoles
         : [];
 
-    if (roles.length === 0) {
-        showEmpty(
-            container,
-            "No suitable job roles were provided."
+    if (!roles.length) {
+        list.append(
+            makeElement("div", "empty-state", "No suitable job roles are listed in the verification record.")
         );
-
         return;
     }
 
     roles.forEach(role => {
-        const tag = document.createElement("div");
-        tag.className = "role-tag";
-
-        const icon = document.createElement("span");
-        icon.textContent = "↗";
-
-        const text = document.createElement("span");
-        text.textContent = role;
-
-        tag.append(icon, text);
-        container.appendChild(tag);
+        list.append(makeElement("span", "role-chip", role));
     });
 }
 
-
-/* =====================================================
-   MAIN PROFILE RENDERER
-===================================================== */
-
 function renderProfile(data) {
-    if (
-        !data ||
-        !data.verificationNumber ||
-        !data.candidateName
-    ) {
-        throw new Error(
-            "The candidate record is missing required information."
-        );
-    }
-
-    hideMessage();
-
-    $("profileLayout").hidden = false;
-
     const name = safeText(data.candidateName, "Candidate");
+    const qualification = getQualification(data);
+    const q = data.qualification || {};
+    const status = safeText(data.status, "UNKNOWN").toUpperCase();
+    const isValid = status === "VALID";
 
-    const initials = name
-        .split(/\s+/)
-        .filter(Boolean)
-        .slice(0, 2)
-        .map(part => part.charAt(0))
-        .join("")
-        .toUpperCase();
-
-    const qualification = data.qualification || {};
-    const experience = data.experience || {};
-
-    $("headingId").textContent =
-        safeText(data.verificationNumber);
-
-    $("verificationId").textContent =
-        safeText(data.verificationNumber);
+    $("headingId").textContent = safeText(data.verificationNumber);
+    $("verificationId").textContent = safeText(data.verificationNumber);
 
     $("candidateName").textContent = name;
+    $("candidateHeadline").textContent = safeText(data.headline);
+    $("avatar").textContent = initials(name);
 
-    $("candidateHeadline").textContent =
-        safeText(data.headline);
+    $("candidateStatus").replaceChildren(
+        makeElement("span", "badge-check", isValid ? "✓" : "!"),
+        document.createTextNode(
+            isValid ? "Verified candidate" : `Status: ${status}`
+        )
+    );
 
-    $("avatar").textContent = initials || "N";
+    $("statusStat").textContent = status;
+    $("statusStat").classList.toggle("green", isValid);
 
     $("verificationDate").textContent =
         formatDate(data.verificationDate);
 
-    $("validTill").textContent =
-        formatDate(data.validTill);
+    $("validTill").textContent = formatDate(data.validTill);
+    $("qualification").textContent = qualification;
+    $("institution").textContent = safeText(q.institution);
 
-    $("totalExperience").textContent =
-        safeText(experience.totalLabel);
-
-    const qualificationText = [
-        qualification.degree,
-        qualification.branch
-    ].filter(Boolean).join(", ");
-
-    $("qualification").textContent =
-        qualificationText || "Not provided";
-
-    $("institution").textContent =
-        safeText(qualification.institution);
+    $("totalExperience").textContent = safeText(
+        data.experience && data.experience.totalLabel
+    );
 
     $("overviewName").textContent = name;
+    $("overviewHeadline").textContent = safeText(data.headline);
+    $("overviewQualification").textContent = qualification;
+    $("overviewInstitution").textContent = safeText(q.institution);
 
-    $("overviewHeadline").textContent =
-        safeText(data.headline);
-
-    $("overviewQualification").textContent =
-        qualificationText || "Not provided";
-
-    $("overviewInstitution").textContent =
-        safeText(qualification.institution);
-
-    const status = String(data.status || "UNKNOWN").toUpperCase();
-
-    $("statusStat").textContent = status;
-
-    $("candidateStatus").innerHTML = `
-        <span class="badge-check">
-            ${status === "VALID" ? "✓" : "!"}
-        </span>
-        ${escapeHTML(
-            status === "VALID"
-                ? "Verified candidate"
-                : status
-        )}
-    `;
-
-    if (status !== "VALID") {
-        $("candidateStatus").style.background = "#fff5e7";
-        $("candidateStatus").style.color = "#a45b05";
-        $("candidateStatus").style.borderColor = "#ffe0b0";
-    }
-
-    $("overviewStatus").textContent =
-        status === "VALID"
-            ? "✓ Verified profile"
-            : "Status: " + status;
+    $("overviewStatus").textContent = isValid
+        ? "Valid verification"
+        : status;
 
     $("accessNote").textContent =
         data.fullResumeLoginRequired === true
-            ? "Full resume access requires login. This page displays the candidate information supplied in the verification record. Private contact details and the full resume are not shown here."
-            : "This page displays the candidate information supplied in the verification record.";
+            ? "Full resume access requires login. This profile only displays candidate information returned by the verification record."
+            : "This profile displays candidate information returned by the verification record.";
 
+    renderChecks(data);
     renderSkills(data);
     renderEducation(data);
     renderExperience(data);
     renderInternships(data);
-    renderChecks(data);
     renderRoles(data);
 
-    /* Only show a valid HTTPS verification URL. */
-    $("officialLink").hidden = true;
+    const officialLink = data.verificationUrl;
 
-    if (data.verificationUrl) {
+    if (officialLink) {
         try {
-            const officialURL = new URL(data.verificationUrl);
+            const url = new URL(officialLink);
 
-            if (officialURL.protocol === "https:") {
-                $("officialLink").href = officialURL.href;
-                $("officialLink").hidden = false;
+            if (url.protocol === "https:") {
+                $("officialLink").href = url.href;
             }
-        } catch (error) {
-            console.warn("The official verification URL is invalid.");
+        } catch {
+            $("officialLink").href = "https://naineet.in/";
         }
     }
 
-    /* Copy verification ID. */
     $("copyButton").onclick = async () => {
-        const id = data.verificationNumber;
-        const button = $("copyButton");
+        const id = safeText(data.verificationNumber);
 
         try {
             await navigator.clipboard.writeText(id);
-
-            button.textContent = "Copied!";
+            $("copyButton").textContent = "Copied!";
 
             setTimeout(() => {
-                button.textContent = "Copy";
-            }, 1600);
-
-        } catch (error) {
+                $("copyButton").textContent = "Copy";
+            }, 1500);
+        } catch {
             window.prompt("Copy verification ID:", id);
         }
     };
+
+    $("pageMessage").hidden = true;
+    $("profileLayout").hidden = false;
 }
 
-
-/* =====================================================
-   PROFILE LOADING
-===================================================== */
-
 function loadProfile() {
-    $("currentYear").textContent = new Date().getFullYear();
-
     const params = new URLSearchParams(window.location.search);
 
     const requestedId = (
         params.get("id") ||
         params.get("verificationNumber") ||
-        DEMO_DATA.verificationNumber
+        "NTV-2026-0002"
     ).trim().toUpperCase();
 
     $("headingId").textContent = requestedId;
 
     /*
-     * DEMO MODE:
-     * Use the supplied JSON so this page works with Live Server
-     * without making a cross-origin API request.
+     * Local demo mode:
+     * Look up the record by its verification number,
+     * not by its random short code.
      */
+    const data = DEMO_RECORDS[requestedId];
 
-    if (USE_DEMO_DATA) {
-        if (
-            requestedId !==
-            DEMO_DATA.verificationNumber.toUpperCase()
-        ) {
-            $("profileLayout").hidden = true;
-
-            showMessage(
-                "This demo currently contains data for " +
-                DEMO_DATA.verificationNumber +
-                ". Please enter that verification ID.",
-                true
-            );
-
-            return;
-        }
-
-        try {
-            renderProfile(DEMO_DATA);
-        } catch (error) {
-            console.error(error);
-
-            $("profileLayout").hidden = true;
-
-            showMessage(
-                error.message || "Unable to display the candidate profile.",
-                true
-            );
-        }
-
+    if (!data) {
+        $("pageMessage").classList.add("error");
+        $("pageMessage").textContent =
+            "No demo record exists for this verification ID. Check the ID and try again.";
+        $("profileLayout").hidden = true;
         return;
     }
 
-    /*
-     * FUTURE API MODE:
-     *
-     * Set USE_DEMO_DATA to false after the backend is ready.
-     * The API must allow requests from your frontend origin.
-     *
-     * Do not enable this until the API/CORS setup is ready.
-     */
-
-    showMessage(
-        "Live API mode is not connected yet. Enable the backend and configure CORS.",
-        true
-    );
+    renderProfile(data);
 }
 
+/* Search skills without losing the event listener. */
+$("skillSearch").addEventListener("input", filterSkills);
 
-/* =====================================================
-   SKILL SEARCH
-===================================================== */
+/* Highlight the navigation link for the visible section. */
+const navigationLinks = [...document.querySelectorAll(".navigation a")];
 
-$("skillSearch").addEventListener("input", event => {
-    const query = event.target.value.trim().toLowerCase();
-
-    document.querySelectorAll("#skillGrid .skill-card").forEach(card => {
-        card.hidden = !card.textContent.toLowerCase().includes(query);
+const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navigationLinks.forEach(link => {
+                link.classList.toggle(
+                    "active",
+                    link.getAttribute("href") === `#${entry.target.id}`
+                );
+            });
+        }
     });
+}, {
+    rootMargin: "-15% 0px -70% 0px"
 });
 
-
-/* =====================================================
-   ACTIVE NAVIGATION ON SCROLL
-===================================================== */
-
-const navLinks = document.querySelectorAll(".navigation a");
-
-if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            }
-
-            navLinks.forEach(link => {
-                const active =
-                    link.getAttribute("href") === "#" + entry.target.id;
-
-                link.classList.toggle("active", active);
-            });
-        });
-    }, {
-        rootMargin: "-130px 0px -65% 0px"
-    });
-
-    document.querySelectorAll(
-        "#overview, #skills, #education, #experience, " +
-        "#internships, #verification, #roles"
-    ).forEach(section => observer.observe(section));
-}
-
-
-/* =====================================================
-   START
-===================================================== */
+document.querySelectorAll(".content-column .section").forEach(section => {
+    sectionObserver.observe(section);
+});
 
 loadProfile();
 </script>
