@@ -99,18 +99,17 @@ input:focus-visible {
     display: flex;
     flex-direction: column;
     gap: 3px;
+    min-width: 0;
 }
 
 .brand-name-image {
-     display: block;
+    display: block;
     width: 150px;
-    max-width: 150px;
+    max-width: 100%;
     height: auto;
     max-height: 38px;
     object-fit: contain;
     object-position: left center;
-    opacity: 1;
-    visibility: visible;
     flex-shrink: 0;
 }
 
@@ -127,6 +126,7 @@ input:focus-visible {
     gap: 9px;
     color: #e1edf5;
     font-size: 12px;
+    white-space: nowrap;
 }
 
 .header-dot {
@@ -135,6 +135,7 @@ input:focus-visible {
     border-radius: 50%;
     background: #36e0ae;
     box-shadow: 0 0 12px #36e0ae70;
+    flex-shrink: 0;
 }
 
 /* PAGE */
@@ -210,6 +211,7 @@ input:focus-visible {
     border-radius: 14px;
     background: white;
     color: var(--muted);
+    overflow-wrap: anywhere;
 }
 
 .message.error {
@@ -283,6 +285,7 @@ input:focus-visible {
     margin-top: 5px;
     color: var(--muted);
     font-size: 13px;
+    overflow-wrap: anywhere;
 }
 
 .verified-badge {
@@ -557,7 +560,6 @@ input:focus-visible {
 }
 
 .progress-fill {
-    width: 0;
     height: 100%;
     border-radius: inherit;
     background: linear-gradient(90deg, #10b981, #42d5a3);
@@ -625,6 +627,7 @@ input:focus-visible {
     overflow: hidden;
     border: 1px solid var(--border);
     border-radius: 12px;
+    margin-bottom: 12px;
 }
 
 .education-top {
@@ -754,6 +757,11 @@ input:focus-visible {
     font-weight: 900;
 }
 
+.check-icon.unverified {
+    background: #fff1e9;
+    color: #c45b21;
+}
+
 .check-item strong {
     color: var(--navy);
     font-size: 11px;
@@ -821,6 +829,8 @@ input:focus-visible {
     transform: translateY(-2px);
 }
 
+/* FOOTER */
+
 footer {
     display: flex;
     justify-content: space-between;
@@ -869,6 +879,10 @@ footer {
 @media (max-width: 760px) {
     .topbar {
         padding: 12px 17px;
+    }
+
+    .brand {
+        gap: 9px;
     }
 
     .brand-logo {
@@ -1033,6 +1047,10 @@ footer {
     .skill-grid {
         grid-template-columns: 1fr;
     }
+
+    .header-right {
+        display: none;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1046,8 +1064,14 @@ footer {
 
 <body>
 
+<!-- HEADER -->
 <header class="topbar">
-    <a class="brand" href="https://naineet.in/" aria-label="Naineet home">
+
+    <!-- Both Naineet logos link to the official website -->
+    <a class="brand"
+       href="https://naineet.in/"
+       aria-label="Visit Naineet official website">
+
         <img
             class="brand-logo"
             src="https://github.com/soniya7788/LandingPage-Naineet/blob/main/Naineet_Logo.png?raw=true"
@@ -1067,13 +1091,15 @@ footer {
         <span class="header-dot"></span>
         Candidate Verification
     </div>
+
 </header>
 
 <main class="container">
 
+    <!-- PAGE HEADING -->
     <div class="page-heading">
         <div>
-            <p class="eyebrow">Digitally signed profile</p>
+            <p class="eyebrow">Digitally Signed Profile</p>
             <h1>Candidate Verification</h1>
             <p class="page-subtitle">
                 Review verified candidate information in one place.
@@ -1086,22 +1112,26 @@ footer {
         </div>
     </div>
 
-    <div id="pageMessage" class="message">
-        Loading candidate profile...
+    <!-- API LOADING / ERROR MESSAGE -->
+    <div id="pageMessage" class="message" role="status" aria-live="polite">
+        Loading candidate profile from Naineet API...
     </div>
 
+    <!-- PROFILE CONTENT -->
     <div class="main-layout" id="profileLayout" hidden>
 
+        <!-- LEFT PROFILE CARD -->
         <aside class="profile-card" id="profile">
+
             <div class="profile-banner"></div>
 
-            <div class="avatar" id="avatar">VR</div>
+            <div class="avatar" id="avatar">VC</div>
 
             <h2 id="candidateName">—</h2>
             <div class="role" id="candidateHeadline">—</div>
 
             <div class="verified-badge" id="candidateStatus">
-                <span class="badge-check">✓</span>
+                <span>✓</span>
                 Verified candidate
             </div>
 
@@ -1143,11 +1173,15 @@ footer {
                 <label>Total experience</label>
                 <strong id="totalExperience">—</strong>
             </div>
+
         </aside>
 
+        <!-- RIGHT CONTENT -->
         <div class="content-column">
 
+            <!-- STATS -->
             <div class="stats">
+
                 <div class="stat">
                     <span class="stat-label">Verification status</span>
                     <strong class="green" id="statusStat">—</strong>
@@ -1162,8 +1196,10 @@ footer {
                     <span class="stat-label">Skills listed</span>
                     <strong id="skillsStat">—</strong>
                 </div>
+
             </div>
 
+            <!-- NAVIGATION -->
             <nav class="navigation" aria-label="Profile sections">
                 <a href="#overview" class="active">Overview</a>
                 <a href="#skills">Skills</a>
@@ -1175,21 +1211,29 @@ footer {
                 <a href="#full-resume">Full Resume</a>
             </nav>
 
+            <!-- OVERVIEW -->
             <section class="section" id="overview">
+
                 <div class="section-heading">
                     <div>
                         <h2>Professional Profile</h2>
                         <p class="section-subtitle">
-                            Candidate details returned by the verification record.
+                            Candidate details returned by the verification API.
                         </p>
                     </div>
-                    <span class="pill green" id="overviewStatus">Verified</span>
+
+                    <span class="pill green" id="overviewStatus">
+                        Verified
+                    </span>
                 </div>
 
                 <div class="overview-grid">
+
                     <div class="subcard">
                         <h3>Candidate Details</h3>
+
                         <div class="fields">
+
                             <div class="field">
                                 <label>Full name</label>
                                 <strong id="overviewName">—</strong>
@@ -1209,6 +1253,7 @@ footer {
                                 <label>Institution</label>
                                 <strong id="overviewInstitution">—</strong>
                             </div>
+
                         </div>
                     </div>
 
@@ -1216,10 +1261,13 @@ footer {
                         <h3>Verification Summary</h3>
                         <div id="overviewChecks"></div>
                     </div>
+
                 </div>
             </section>
 
+            <!-- SKILLS -->
             <section class="section" id="skills">
+
                 <div class="section-heading">
                     <div>
                         <h2>Technical Skills</h2>
@@ -1227,6 +1275,7 @@ footer {
                             Skills listed in the verification record.
                         </p>
                     </div>
+
                     <span class="pill purple" id="skillsCount">0 skills</span>
                 </div>
 
@@ -1238,26 +1287,34 @@ footer {
                     aria-label="Search technical skills">
 
                 <div class="skill-grid" id="skillGrid"></div>
+
                 <div id="noSkills" class="empty-state" hidden>
                     No skills match your search.
                 </div>
+
             </section>
 
+            <!-- EDUCATION -->
             <section class="section" id="education">
+
                 <div class="section-heading">
                     <div>
                         <h2>Education &amp; Qualifications</h2>
                         <p class="section-subtitle">
-                            Academic information provided in the record.
+                            Academic information returned by the API.
                         </p>
                     </div>
-                    <span class="pill green">Verified</span>
+
+                    <span class="pill green">Academic Record</span>
                 </div>
 
                 <div id="educationList"></div>
+
             </section>
 
+            <!-- EXPERIENCE -->
             <section class="section" id="experience">
+
                 <div class="section-heading">
                     <div>
                         <h2>Work Experience</h2>
@@ -1265,13 +1322,19 @@ footer {
                             Employment records returned by the verification API.
                         </p>
                     </div>
-                    <span class="pill green" id="experienceCount">0 records</span>
+
+                    <span class="pill green" id="experienceCount">
+                        0 records
+                    </span>
                 </div>
 
                 <div class="experience-list" id="experienceList"></div>
+
             </section>
 
+            <!-- INTERNSHIPS -->
             <section class="section" id="internships">
+
                 <div class="section-heading">
                     <div>
                         <h2>Internships</h2>
@@ -1279,27 +1342,37 @@ footer {
                             Internship information available in the record.
                         </p>
                     </div>
+
                     <span class="pill" id="internshipCount">0 records</span>
                 </div>
 
                 <div id="internshipList"></div>
+
             </section>
 
+            <!-- VERIFICATION -->
             <section class="section" id="verification">
+
                 <div class="section-heading">
                     <div>
                         <h2>Verification Summary</h2>
                         <p class="section-subtitle">
-                            Checks explicitly returned by the verification record.
+                            Checks explicitly returned by the API.
                         </p>
                     </div>
-                    <span class="pill green" id="verificationCount">0/0 checks</span>
+
+                    <span class="pill green" id="verificationCount">
+                        0/0 checks
+                    </span>
                 </div>
 
                 <div class="check-grid" id="checkGrid"></div>
+
             </section>
 
+            <!-- SUITABLE ROLES -->
             <section class="section" id="roles">
+
                 <div class="section-heading">
                     <div>
                         <h2>Suitable Job Roles</h2>
@@ -1310,9 +1383,12 @@ footer {
                 </div>
 
                 <div class="role-list" id="roleList"></div>
+
             </section>
 
+            <!-- FULL RESUME -->
             <section class="section" id="full-resume">
+
                 <div class="section-heading">
                     <div>
                         <h2>Full Resume Access</h2>
@@ -1324,8 +1400,9 @@ footer {
 
                 <div class="access-box">
                     <h3>Official candidate verification</h3>
+
                     <p id="accessNote">
-                        This profile displays information returned by the verification record.
+                        This profile displays information returned by the verification API.
                     </p>
 
                     <a
@@ -1337,10 +1414,12 @@ footer {
                         Open Official Verification ↗
                     </a>
                 </div>
+
             </section>
 
         </div>
     </div>
+
 </main>
 
 <footer>
@@ -1349,111 +1428,53 @@ footer {
 </footer>
 
 <script>
+"use strict";
+
 /*
- * DEMO DATA
- * This uses the JSON record supplied for NTV-2026-0002.
- * No private contact details are invented or displayed.
+==========================================================
+NAINEET VERIFICATION API
+==========================================================
+
+Actual endpoint format:
+https://verify.naineet.in/api/v1/auth/verify/code/{shortCode}
+
+Example:
+https://verify.naineet.in/api/v1/auth/verify/code/zjmm6bb
+
+This page fetches the candidate profile from the API.
+Candidate details are not hardcoded in this file.
+
+NOTE:
+The API server must allow browser requests from this
+frontend's origin. JavaScript cannot bypass CORS.
+*/
+
+const API_BASE_URL =
+    "https://verify.naineet.in/api/v1/auth/verify/code/";
+
+/*
+ * Default short code for testing.
+ * Change this when testing another candidate.
+ */
+const DEFAULT_VERIFICATION_CODE = "zjmm6bb";
+
+/*
+ * This mapping is only for compatibility with the example
+ * verification ID. It does NOT contain candidate profile data.
  *
- * Later, replace this local lookup with your backend API.
+ * For other candidates, pass their short code in the URL:
+ * index.html?code=THEIR_SHORT_CODE
  */
-
-const DEMO_RECORDS = {
-    "NTV-2026-0002": {
-        verificationNumber: "NTV-2026-0002",
-        shortCode: "zjmm6bb",
-        verificationUrl: "https://naineet.in/vcv/zjmm6bb",
-        status: "VALID",
-        verificationDate: "2026-10-22",
-        validTill: "2027-04-22",
-
-        candidateName: "Vanshaj Rathi",
-        headline: "Senior Software Engineer",
-
-        skills: [
-            "Java 8/17",
-            "Spring Boot",
-            "Spring Data JPA",
-            "Hibernate",
-            "Oracle",
-            "MySQL",
-            "Git",
-            "Docker",
-            "Apache Kafka",
-            "Microservices",
-            "REST APIs",
-            "Java WEB Services",
-            "DBMS",
-            "HTML5",
-            "CSS 3",
-            "JUnit"
-        ],
-
-        qualification: {
-            degree: "B. Tech",
-            branch: "Computer Science",
-            institution: "ABES Engineering College"
-        },
-
-        experience: {
-            totalLabel: "5 Years 11 Months",
-            totalMonths: 71,
-            items: [
-                {
-                    company: "Capgemini",
-                    designation: "Software Developer",
-                    durationMonths: 17
-                },
-                {
-                    company: "Tata Consultancy Services",
-                    designation: "Java Developer",
-                    durationMonths: 54
-                }
-            ]
-        },
-
-        internship: {
-            totalLabel: "0 Months",
-            totalMonths: 0,
-            items: []
-        },
-
-        education: [
-            {
-                degree: "B. Tech",
-                branch: "Computer Science",
-                institution: "ABES Engineering College",
-                startYear: 2016,
-                endYear: 2020
-            }
-        ],
-
-        qualifiedRoles: [
-            "SDE II",
-            "Senior Software Engineer",
-            "Java Full Stack Developer",
-            "Java Backend Software Engineer"
-        ],
-
-        checks: {
-            identityVerified: true,
-            academicDetailsVerified: true,
-            workExperienceVerified: true,
-            skillsValidated: true
-        },
-
-        fullResumeLoginRequired: true
-    }
-};
-
-/*
- * The ID is the public verification number.
- * The short code is the separate code used in the verification URL.
- */
-const VERIFICATION_CODES = {
+const VERIFICATION_CODE_MAP = {
     "NTV-2026-0002": "zjmm6bb"
 };
 
 const $ = id => document.getElementById(id);
+
+
+/* ========================================================
+   GENERAL HELPERS
+======================================================== */
 
 function safeText(value, fallback = "—") {
     if (value === null || value === undefined || value === "") {
@@ -1463,13 +1484,29 @@ function safeText(value, fallback = "—") {
     return String(value);
 }
 
+function makeElement(tag, className = "", text = undefined) {
+    const element = document.createElement(tag);
+
+    if (className) {
+        element.className = className;
+    }
+
+    if (text !== undefined) {
+        element.textContent = text;
+    }
+
+    return element;
+}
+
 function formatDate(value) {
-    if (!value) return "Not provided";
+    if (!value) {
+        return "Not provided";
+    }
 
     const date = new Date(value + "T00:00:00");
 
     if (Number.isNaN(date.getTime())) {
-        return value;
+        return String(value);
     }
 
     return date.toLocaleDateString("en-GB", {
@@ -1479,32 +1516,34 @@ function formatDate(value) {
     });
 }
 
-function initials(name) {
+function getInitials(name) {
     return safeText(name, "VC")
         .split(/\s+/)
         .filter(Boolean)
         .slice(0, 2)
-        .map(part => part[0].toUpperCase())
+        .map(part => part.charAt(0).toUpperCase())
         .join("");
 }
 
-function makeElement(tag, className, text) {
-    const element = document.createElement(tag);
-
-    if (className) element.className = className;
-    if (text !== undefined) element.textContent = text;
-
-    return element;
-}
-
 function getQualification(data) {
-    const q = data.qualification || {};
+    const qualification = data.qualification || {};
 
     return [
-        q.degree,
-        q.branch
+        qualification.degree,
+        qualification.branch
     ].filter(Boolean).join(", ") || "Not provided";
 }
+
+function showEmptyState(container, message) {
+    container.replaceChildren(
+        makeElement("div", "empty-state", message)
+    );
+}
+
+
+/* ========================================================
+   VERIFICATION CHECKS
+======================================================== */
 
 function getCheckLabels(checks) {
     const labels = {
@@ -1517,42 +1556,60 @@ function getCheckLabels(checks) {
     return Object.entries(labels).map(([key, label]) => ({
         key,
         label,
-        verified: checks && checks[key] === true
+        verified: Boolean(checks && checks[key] === true)
     }));
 }
 
 function renderChecks(data) {
     const checks = getCheckLabels(data.checks || {});
-    const verifiedCount = checks.filter(item => item.verified).length;
 
-    $("checksStat").textContent = `${verifiedCount}/${checks.length}`;
+    const verifiedCount = checks.filter(
+        item => item.verified
+    ).length;
+
+    $("checksStat").textContent =
+        `${verifiedCount}/${checks.length}`;
+
     $("verificationCount").textContent =
         `${verifiedCount}/${checks.length} checks`;
 
-    $("checkGrid").replaceChildren();
-    $("overviewChecks").replaceChildren();
+    const checkGrid = $("checkGrid");
+    const overviewChecks = $("overviewChecks");
+
+    checkGrid.replaceChildren();
+    overviewChecks.replaceChildren();
 
     checks.forEach(item => {
+
+        /* Full verification cards */
+
         const card = makeElement("div", "check-item");
 
         const icon = makeElement(
             "span",
-            "check-icon",
+            item.verified
+                ? "check-icon"
+                : "check-icon unverified",
             item.verified ? "✓" : "!"
         );
 
         const label = makeElement(
             "strong",
             "",
-            `${item.label}: ${item.verified ? "Verified" : "Not verified"}`
+            `${item.label}: ${
+                item.verified ? "Verified" : "Not verified"
+            }`
         );
 
         card.append(icon, label);
-        $("checkGrid").append(card);
+        checkGrid.append(card);
+
+        /* Overview progress indicators */
 
         const row = makeElement("div", "progress-row");
 
         const labelRow = makeElement("div", "progress-label");
+
         labelRow.append(
             makeElement("span", "", item.label),
             makeElement(
@@ -1564,16 +1621,25 @@ function renderChecks(data) {
 
         const track = makeElement("div", "progress-track");
         const fill = makeElement("div", "progress-fill");
+
         fill.style.width = item.verified ? "100%" : "0%";
 
         track.append(fill);
         row.append(labelRow, track);
-        $("overviewChecks").append(row);
+
+        overviewChecks.append(row);
     });
 }
 
+
+/* ========================================================
+   SKILLS
+======================================================== */
+
 function renderSkills(data) {
-    const skills = Array.isArray(data.skills) ? data.skills : [];
+    const skills = Array.isArray(data.skills)
+        ? data.skills
+        : [];
 
     $("skillsStat").textContent = skills.length;
     $("skillsCount").textContent = `${skills.length} skills`;
@@ -1582,38 +1648,58 @@ function renderSkills(data) {
     grid.replaceChildren();
 
     skills.forEach(skill => {
+        const skillName = safeText(skill, "");
+
+        if (!skillName) {
+            return;
+        }
+
         const card = makeElement("div", "skill-card");
-        card.dataset.skill = String(skill).toLowerCase();
+
+        card.dataset.skill = skillName.toLowerCase();
 
         card.append(
             makeElement("span", "skill-dot"),
-            makeElement("span", "skill-name", skill)
+            makeElement("span", "skill-name", skillName)
         );
 
         grid.append(card);
     });
 
-    $("noSkills").hidden = skills.length > 0;
+    $("noSkills").hidden = grid.children.length > 0;
 
-    $("skillSearch").addEventListener("input", filterSkills, {
-        once: true
-    });
+    filterSkills();
 }
 
 function filterSkills() {
-    const query = $("skillSearch").value.trim().toLowerCase();
-    const cards = [...$("skillGrid").querySelectorAll(".skill-card")];
+    const query = $("skillSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const cards = [
+        ...$("skillGrid").querySelectorAll(".skill-card")
+    ];
+
     let visible = 0;
 
     cards.forEach(card => {
         const matches = card.dataset.skill.includes(query);
+
         card.hidden = !matches;
 
-        if (matches) visible++;
+        if (matches) {
+            visible++;
+        }
     });
 
     $("noSkills").hidden = visible !== 0;
 }
+
+
+/* ========================================================
+   EDUCATION
+======================================================== */
 
 function renderEducation(data) {
     const list = $("educationList");
@@ -1624,8 +1710,9 @@ function renderEducation(data) {
         : [];
 
     if (!education.length) {
-        list.append(
-            makeElement("div", "empty-state", "No education records are listed in the verification record.")
+        showEmptyState(
+            list,
+            "No education records are available in the API response."
         );
         return;
     }
@@ -1636,27 +1723,33 @@ function renderEducation(data) {
         const top = makeElement("div", "education-top");
         const title = document.createElement("div");
 
+        const degreeTitle = [
+            item.degree,
+            item.branch
+        ].filter(Boolean).join(", ");
+
         title.append(
             makeElement(
                 "h3",
                 "",
-                [item.degree, item.branch].filter(Boolean).join(", ")
+                safeText(degreeTitle, "Qualification")
             ),
             makeElement(
                 "p",
                 "",
-                safeText(item.branch, "Qualification details")
+                safeText(item.branch, "Academic details")
             )
         );
 
         top.append(
             title,
-            makeElement("span", "pill green", "API record")
+            makeElement("span", "pill green", "API Record")
         );
 
         const fields = makeElement("div", "education-fields");
 
         const institution = makeElement("div", "field");
+
         institution.append(
             makeElement("label", "", "Institution"),
             makeElement(
@@ -1667,6 +1760,7 @@ function renderEducation(data) {
         );
 
         const period = makeElement("div", "field");
+
         period.append(
             makeElement("label", "", "Study period"),
             makeElement(
@@ -1680,31 +1774,42 @@ function renderEducation(data) {
 
         fields.append(institution, period);
         card.append(top, fields);
+
         list.append(card);
     });
 }
+
+
+/* ========================================================
+   WORK EXPERIENCE
+======================================================== */
 
 function renderExperience(data) {
     const list = $("experienceList");
     list.replaceChildren();
 
-    const items = data.experience &&
-        Array.isArray(data.experience.items)
-        ? data.experience.items
+    const experience = data.experience || {};
+
+    const items = Array.isArray(experience.items)
+        ? experience.items
         : [];
 
     $("experienceCount").textContent =
-        `${items.length} ${items.length === 1 ? "record" : "records"}`;
+        `${items.length} ${
+            items.length === 1 ? "record" : "records"
+        }`;
 
     if (!items.length) {
-        list.append(
-            makeElement("div", "empty-state", "No work experience records are listed in the verification record.")
+        showEmptyState(
+            list,
+            "No work experience records are available in the API response."
         );
         return;
     }
 
     items.forEach(item => {
         const card = makeElement("div", "experience-card");
+
         const company = safeText(item.company, "Company");
 
         const logo = makeElement(
@@ -1725,7 +1830,10 @@ function renderExperience(data) {
             makeElement(
                 "small",
                 "",
-                `${safeText(item.durationMonths, "—")} months`
+                item.durationMonths !== null &&
+                item.durationMonths !== undefined
+                    ? `${item.durationMonths} months`
+                    : "Duration not provided"
             )
         );
 
@@ -1734,25 +1842,31 @@ function renderExperience(data) {
     });
 }
 
+
+/* ========================================================
+   INTERNSHIPS
+======================================================== */
+
 function renderInternships(data) {
     const list = $("internshipList");
     list.replaceChildren();
 
     const internship = data.internship || {};
+
     const items = Array.isArray(internship.items)
         ? internship.items
         : [];
 
     $("internshipCount").textContent =
-        safeText(internship.totalLabel, `${items.length} records`);
+        safeText(
+            internship.totalLabel,
+            `${items.length} records`
+        );
 
     if (!items.length) {
-        list.append(
-            makeElement(
-                "div",
-                "empty-state",
-                "No internship records are listed in the verification record."
-            )
+        showEmptyState(
+            list,
+            "No internship records are available in the API response."
         );
         return;
     }
@@ -1761,21 +1875,31 @@ function renderInternships(data) {
 
     items.forEach(item => {
         const card = makeElement("div", "experience-card");
+
+        const company = safeText(item.company, "Internship");
+
         const logo = makeElement(
             "div",
             "company-logo",
-            safeText(item.company, "I").charAt(0).toUpperCase()
+            company.charAt(0).toUpperCase()
         );
 
         const info = makeElement("div", "experience-info");
 
         info.append(
-            makeElement("h3", "", safeText(item.company)),
-            makeElement("p", "", safeText(item.designation)),
+            makeElement("h3", "", company),
+            makeElement(
+                "p",
+                "",
+                safeText(item.designation, "Role not provided")
+            ),
             makeElement(
                 "small",
                 "",
-                `${safeText(item.durationMonths, "—")} months`
+                item.durationMonths !== null &&
+                item.durationMonths !== undefined
+                    ? `${item.durationMonths} months`
+                    : "Duration not provided"
             )
         );
 
@@ -1786,6 +1910,11 @@ function renderInternships(data) {
     list.append(cards);
 }
 
+
+/* ========================================================
+   SUITABLE JOB ROLES
+======================================================== */
+
 function renderRoles(data) {
     const list = $("roleList");
     list.replaceChildren();
@@ -1795,65 +1924,121 @@ function renderRoles(data) {
         : [];
 
     if (!roles.length) {
-        list.append(
-            makeElement("div", "empty-state", "No suitable job roles are listed in the verification record.")
+        showEmptyState(
+            list,
+            "No suitable job roles are available in the API response."
         );
         return;
     }
 
     roles.forEach(role => {
-        list.append(makeElement("span", "role-chip", role));
+        list.append(
+            makeElement("span", "role-chip", safeText(role))
+        );
     });
 }
 
+
+/* ========================================================
+   RENDER API PROFILE
+======================================================== */
+
 function renderProfile(data) {
     const name = safeText(data.candidateName, "Candidate");
+
     const qualification = getQualification(data);
-    const q = data.qualification || {};
-    const status = safeText(data.status, "UNKNOWN").toUpperCase();
+
+    const qualificationData = data.qualification || {};
+
+    const status = safeText(
+        data.status,
+        "UNKNOWN"
+    ).toUpperCase();
+
     const isValid = status === "VALID";
 
-    $("headingId").textContent = safeText(data.verificationNumber);
-    $("verificationId").textContent = safeText(data.verificationNumber);
+    /* Reference and identity */
+
+    $("headingId").textContent =
+        safeText(data.verificationNumber);
+
+    $("verificationId").textContent =
+        safeText(data.verificationNumber);
 
     $("candidateName").textContent = name;
-    $("candidateHeadline").textContent = safeText(data.headline);
-    $("avatar").textContent = initials(name);
+
+    $("candidateHeadline").textContent =
+        safeText(data.headline, "Role not provided");
+
+    $("avatar").textContent = getInitials(name);
+
+    /* Status badge */
 
     $("candidateStatus").replaceChildren(
-        makeElement("span", "badge-check", isValid ? "✓" : "!"),
+        makeElement(
+            "span",
+            "",
+            isValid ? "✓" : "!"
+        ),
         document.createTextNode(
-            isValid ? "Verified candidate" : `Status: ${status}`
+            isValid
+                ? "Verified candidate"
+                : `Status: ${status}`
         )
     );
 
+    /* Statistics */
+
     $("statusStat").textContent = status;
-    $("statusStat").classList.toggle("green", isValid);
 
-    $("verificationDate").textContent =
-        formatDate(data.verificationDate);
-
-    $("validTill").textContent = formatDate(data.validTill);
-    $("qualification").textContent = qualification;
-    $("institution").textContent = safeText(q.institution);
-
-    $("totalExperience").textContent = safeText(
-        data.experience && data.experience.totalLabel
+    $("statusStat").classList.toggle(
+        "green",
+        isValid
     );
-
-    $("overviewName").textContent = name;
-    $("overviewHeadline").textContent = safeText(data.headline);
-    $("overviewQualification").textContent = qualification;
-    $("overviewInstitution").textContent = safeText(q.institution);
 
     $("overviewStatus").textContent = isValid
         ? "Valid verification"
         : status;
 
+    /* Dates and qualification */
+
+    $("verificationDate").textContent =
+        formatDate(data.verificationDate);
+
+    $("validTill").textContent =
+        formatDate(data.validTill);
+
+    $("qualification").textContent = qualification;
+
+    $("institution").textContent =
+        safeText(qualificationData.institution);
+
+    const experience = data.experience || {};
+
+    $("totalExperience").textContent =
+        safeText(experience.totalLabel);
+
+    /* Overview details */
+
+    $("overviewName").textContent = name;
+
+    $("overviewHeadline").textContent =
+        safeText(data.headline);
+
+    $("overviewQualification").textContent =
+        qualification;
+
+    $("overviewInstitution").textContent =
+        safeText(qualificationData.institution);
+
+    /* Full resume information */
+
     $("accessNote").textContent =
         data.fullResumeLoginRequired === true
-            ? "Full resume access requires login. This profile only displays candidate information returned by the verification record."
-            : "This profile displays candidate information returned by the verification record.";
+            ? "Full resume access requires login. This page displays only the candidate information returned by the verification API."
+            : "This page displays candidate information returned by the verification API.";
+
+    /* Render every API section */
 
     renderChecks(data);
     renderSkills(data);
@@ -1862,94 +2047,274 @@ function renderProfile(data) {
     renderInternships(data);
     renderRoles(data);
 
-    const officialLink = data.verificationUrl;
+    /* Official verification link */
 
-    if (officialLink) {
+    const officialLink = $("officialLink");
+
+    const verificationUrl = data.verificationUrl;
+
+    if (verificationUrl) {
         try {
-            const url = new URL(officialLink);
+            const parsedUrl = new URL(verificationUrl);
 
-            if (url.protocol === "https:") {
-                $("officialLink").href = url.href;
+            if (
+                parsedUrl.protocol === "https:" &&
+                parsedUrl.hostname === "naineet.in"
+            ) {
+                officialLink.href = parsedUrl.href;
+            } else {
+                officialLink.href = "https://naineet.in/";
             }
         } catch {
-            $("officialLink").href = "https://naineet.in/";
+            officialLink.href = "https://naineet.in/";
         }
+    } else {
+        officialLink.href = "https://naineet.in/";
     }
+
+    /* Copy verification ID */
 
     $("copyButton").onclick = async () => {
         const id = safeText(data.verificationNumber);
 
         try {
             await navigator.clipboard.writeText(id);
+
             $("copyButton").textContent = "Copied!";
 
             setTimeout(() => {
                 $("copyButton").textContent = "Copy";
             }, 1500);
-        } catch {
+
+        } catch (error) {
             window.prompt("Copy verification ID:", id);
         }
     };
+
+    /* Show profile only after successful API response */
 
     $("pageMessage").hidden = true;
     $("profileLayout").hidden = false;
 }
 
-function loadProfile() {
-    const params = new URLSearchParams(window.location.search);
 
-    const requestedId = (
-        params.get("id") ||
-        params.get("verificationNumber") ||
-        "NTV-2026-0002"
-    ).trim().toUpperCase();
+/* ========================================================
+   LOAD PROFILE FROM THE REAL API
+======================================================== */
 
-    $("headingId").textContent = requestedId;
+async function loadProfile() {
+    const params = new URLSearchParams(
+        window.location.search
+    );
 
     /*
-     * Local demo mode:
-     * Look up the record by its verification number,
-     * not by its random short code.
+     * Supported URL formats:
+     *
+     * index.html?code=zjmm6bb
+     * index.html?shortCode=zjmm6bb
+     * index.html?id=NTV-2026-0002
+     *
+     * When no code is supplied, the default test code is used.
      */
-    const data = DEMO_RECORDS[requestedId];
 
-    if (!data) {
-        $("pageMessage").classList.add("error");
-        $("pageMessage").textContent =
-            "No demo record exists for this verification ID. Check the ID and try again.";
-        $("profileLayout").hidden = true;
-        return;
+    let code = (
+        params.get("code") ||
+        params.get("shortCode") ||
+        ""
+    ).trim();
+
+    const verificationNumber = (
+        params.get("id") ||
+        params.get("verificationNumber") ||
+        ""
+    ).trim().toUpperCase();
+
+    /* Convert the known verification number to its short code. */
+
+    if (!code && verificationNumber) {
+        code = VERIFICATION_CODE_MAP[verificationNumber] || "";
     }
 
-    renderProfile(data);
+    /* Use the default short code for local testing. */
+
+    if (!code) {
+        code = DEFAULT_VERIFICATION_CODE;
+    }
+
+    const message = $("pageMessage");
+
+    message.hidden = false;
+    message.classList.remove("error");
+
+    message.textContent =
+        "Loading candidate profile from Naineet API...";
+
+    $("profileLayout").hidden = true;
+
+    $("headingId").textContent =
+        verificationNumber || "Loading...";
+
+    try {
+        /*
+         * This is the actual API call.
+         * Candidate details are fetched from the server.
+         */
+
+        const apiUrl =
+            API_BASE_URL + encodeURIComponent(code);
+
+        console.log("Calling Naineet API:", apiUrl);
+
+        const response = await fetch(apiUrl, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+
+        console.log(
+            "Naineet API HTTP status:",
+            response.status
+        );
+
+        if (response.status === 404) {
+            throw new Error(
+                "Candidate profile not found. Check the verification code."
+            );
+        }
+
+        if (response.status === 401 ||
+            response.status === 403) {
+            throw new Error(
+                `The API returned HTTP ${response.status}. The API may require permission, authentication, or an allowed frontend origin.`
+            );
+        }
+
+        if (!response.ok) {
+            throw new Error(
+                `API request failed with HTTP ${response.status}.`
+            );
+        }
+
+        const responseData = await response.json();
+
+        console.log(
+            "Naineet API response:",
+            responseData
+        );
+
+        /*
+         * Support either:
+         * 1. A direct candidate JSON object.
+         * 2. A candidate object nested inside data.
+         * 3. A candidate object nested inside profile.
+         */
+
+        const profile =
+            responseData.data ||
+            responseData.profile ||
+            responseData;
+
+        /*
+         * Validate the expected response.
+         * Do not display demo data if the API response is invalid.
+         */
+
+        if (
+            !profile ||
+            (
+                !profile.candidateName &&
+                !profile.verificationNumber
+            )
+        ) {
+            throw new Error(
+                "The API responded, but the candidate fields were not found in the expected format."
+            );
+        }
+
+        /*
+         * Render only the data received from the API.
+         */
+
+        renderProfile(profile);
+
+    } catch (error) {
+        console.error(
+            "Naineet profile API error:",
+            error
+        );
+
+        message.hidden = false;
+        message.classList.add("error");
+
+        if (
+            error instanceof TypeError &&
+            /fetch/i.test(error.message)
+        ) {
+            message.textContent =
+                "Unable to connect to the Naineet API. This may be a CORS restriction or a network error. Try opening this page through Live Server. If the error continues, the API administrator must allow your frontend origin.";
+        } else {
+            message.textContent =
+                "Unable to load the candidate profile. " +
+                error.message;
+        }
+
+        $("profileLayout").hidden = true;
+    }
 }
 
-/* Search skills without losing the event listener. */
-$("skillSearch").addEventListener("input", filterSkills);
 
-/* Highlight the navigation link for the visible section. */
-const navigationLinks = [...document.querySelectorAll(".navigation a")];
+/* ========================================================
+   NAVIGATION HIGHLIGHT
+======================================================== */
 
-const sectionObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            navigationLinks.forEach(link => {
-                link.classList.toggle(
-                    "active",
-                    link.getAttribute("href") === `#${entry.target.id}`
-                );
+$("skillSearch").addEventListener(
+    "input",
+    filterSkills
+);
+
+const navigationLinks = [
+    ...document.querySelectorAll(".navigation a")
+];
+
+const sections = [
+    ...document.querySelectorAll(
+        ".content-column .section"
+    )
+];
+
+if ("IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navigationLinks.forEach(link => {
+                        link.classList.toggle(
+                            "active",
+                            link.getAttribute("href") ===
+                            `#${entry.target.id}`
+                        );
+                    });
+                }
             });
+        },
+        {
+            rootMargin: "-15% 0px -70% 0px"
         }
-    });
-}, {
-    rootMargin: "-15% 0px -70% 0px"
-});
+    );
 
-document.querySelectorAll(".content-column .section").forEach(section => {
-    sectionObserver.observe(section);
-});
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+}
+
+
+/* ========================================================
+   START
+======================================================== */
 
 loadProfile();
+
 </script>
 
 </body>
